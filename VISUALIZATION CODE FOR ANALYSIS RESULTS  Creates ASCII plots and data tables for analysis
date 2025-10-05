@@ -1,0 +1,354 @@
+// ============================================================================
+// VISUALIZATION CODE FOR ANALYSIS RESULTS
+// Creates ASCII plots and data tables for analysis
+// ============================================================================
+
+/**
+ * Create ASCII scatter plot
+ * @param {Array} x_data - X-axis data
+ * @param {Array} y_data - Y-axis data
+ * @param {Object} options - {width, height, x_label, y_label, title}
+ */
+function createScatterPlot(x_data, y_data, options = {}) {
+  const width = options.width || 60;
+  const height = options.height || 20;
+  
+  // Find ranges
+  const x_min = Math.min(...x_data);
+  const x_max = Math.max(...x_data);
+  const y_min = Math.min(...y_data);
+  const y_max = Math.max(...y_data);
+  
+  // Create grid
+  const grid = Array(height).fill().map(() => Array(width).fill(' '));
+  
+  // Plot points
+  x_data.forEach((x, i) => {
+    const y = y_data[i];
+    const x_pos = Math.floor(((x - x_min) / (x_max - x_min)) * (width - 1));
+    const y_pos = height - 1 - Math.floor(((y - y_min) / (y_max - y_min)) * (height - 1));
+    if (x_pos >= 0 && x_pos < width && y_pos >= 0 && y_pos < height) {
+      grid[y_pos][x_pos] = '●';
+    }
+  });
+  
+  // Print plot
+  if (options.title) {
+    console.log('\n' + options.title);
+    console.log('─'.repeat(width));
+  }
+  
+  grid.forEach((row, i) => {
+    if (i === 0 || i === height - 1 || i === Math.floor(height / 2)) {
+      const y_val = y_max - (i / (height - 1)) * (y_max - y_min);
+      console.log(`${y_val.toFixed(2).padStart(6)} │ ${row.join('')}`);
+    } else {
+      console.log(`       │ ${row.join('')}`);
+    }
+  });
+  
+  // X-axis labels
+  console.log('       └' + '─'.repeat(width));
+  const x_labels = `       ${x_min.toFixed(1)}${' '.repeat(width - 20)}${x_max.toFixed(1)}`;
+  console.log(x_labels);
+  
+  if (options.x_label) console.log(`\n       ${options.x_label}`);
+  if (options.y_label) console.log(`\n${options.y_label} (vertical)`);
+}
+
+/**
+ * Create histogram of values
+ */
+function createHistogram(values, options = {}) {
+  const bins = options.bins || 10;
+  const title = options.title || 'Distribution';
+  
+  const min_val = Math.min(...values);
+  const max_val = Math.max(...values);
+  const bin_width = (max_val - min_val) / bins;
+  
+  // Create bins
+  const counts = Array(bins).fill(0);
+  values.forEach(v => {
+    const bin = Math.min(Math.floor((v - min_val) / bin_width), bins - 1);
+    counts[bin]++;
+  });
+  
+  const max_count = Math.max(...counts);
+  const bar_width = 40;
+  
+  console.log(`\n${title}`);
+  console.log('─'.repeat(60));
+  
+  counts.forEach((count, i) => {
+    const bin_start = min_val + i * bin_width;
+    const bin_end = bin_start + bin_width;
+    const bar_length = Math.round((count / max_count) * bar_width);
+    const bar = '█'.repeat(bar_length);
+    console.log(`${bin_start.toFixed(3)}-${bin_end.toFixed(3)} │${bar} ${count}`);
+  });
+}
+
+/**
+ * Create mass-exponent trend plot
+ */
+function plotMassExponentTrend(galaxy_results) {
+  console.log("\n=== M(r) EXPONENT vs GALAXY MASS ===\n");
+  
+  const log_masses = galaxy_results.map(g => Math.log10(g.mass_total));
+  const exponents = galaxy_results.map(g => g.M_r_exponent);
+  
+  createScatterPlot(log_masses, exponents, {
+    width: 60,
+    height: 20,
+    title: 'M(r) Exponent vs log(Mass)',
+    x_label: 'log₁₀(Mass/M☉)',
+    y_label: 'M(r) exponent'
+  });
+  
+  // Statistics by mass bin
+  console.log("\n\nStatistics by mass bin:");
+  console.log("─".repeat(70));
+  
+  const mass_bins = [
+    { label: '<1e9', min: 0, max: 1e9 },
+    { label: '1-5e9', min: 1e9, max: 5e9 },
+    { label: '5-20e9', min: 5e9, max: 20e9 },
+    { label: '20-100e9', min: 20e9, max: 100e9 },
+    { label: '>100e9', min: 100e9, max: 1e12 }
+  ];
+  
+  mass_bins.forEach(bin => {
+    const in_bin = galaxy_results.filter(g => 
+      g.mass_total >= bin.min && g.mass_total < bin.max
+    );
+    
+    if (in_bin.length > 0) {
+      const exps = in_bin.map(g => g.M_r_exponent);
+      const mean = exps.reduce((a, b) => a + b) / exps.length;
+      const std = Math.sqrt(
+        exps.reduce((sum, e) => sum + Math.pow(e - mean, 2), 0) / exps.length
+      );
+      
+      console.log(`${bin.label.padEnd(12)} N=${in_bin.length.toString().padStart(2)}  ` +
+                  `mean=${mean.toFixed(3)}  σ=${std.toFixed(3)}`);
+    }
+  });
+}
+
+/**
+ * Create morphology comparison plot
+ */
+function plotMorphologyComparison(galaxy_results) {
+  console.log("\n=== M(r) EXPONENT by MORPHOLOGY ===\n");
+  
+  // Group by type
+  const by_type = {};
+  galaxy_results.forEach(g => {
+    if (!by_type[g.type]) by_type[g.type] = [];
+    by_type[g.type].push(g.M_r_exponent);
+  });
+  
+  // Calculate statistics
+  const type_stats = {};
+  for (const [type, exps] of Object.entries(by_type)) {
+    const mean = exps.reduce((a, b) => a + b) / exps.length;
+    const std = Math.sqrt(
+      exps.reduce((sum, e) => sum + Math.pow(e - mean, 2), 0) / exps.length
+    );
+    type_stats[type] = { mean, std, n: exps.length, exps };
+  }
+  
+  // Sort by mean exponent
+  const sorted_types = Object.keys(type_stats).sort(
+    (a, b) => type_stats[a].mean - type_stats[b].mean
+  );
+  
+  console.log("Type            N    Mean    σ      Range");
+  console.log("─".repeat(60));
+  
+  sorted_types.forEach(type => {
+    const stats = type_stats[type];
+    const min = Math.min(...stats.exps);
+    const max = Math.max(...stats.exps);
+    
+    console.log(
+      `${type.padEnd(14)} ${stats.n.toString().padStart(2)}   ` +
+      `${stats.mean.toFixed(3)}  ${stats.std.toFixed(3)}   ` +
+      `${min.toFixed(3)}-${max.toFixed(3)}`
+    );
+  });
+  
+  // Visual representation
+  console.log("\n\nVisual distribution:");
+  console.log("─".repeat(60));
+  
+  const scale_min = 1.70;
+  const scale_max = 2.00;
+  const plot_width = 40;
+  
+  sorted_types.forEach(type => {
+    const stats = type_stats[type];
+    const pos = Math.round(((stats.mean - scale_min) / (scale_max - scale_min)) * plot_width);
+    const left = ' '.repeat(Math.max(0, pos - 1));
+    const right = ' '.repeat(Math.max(0, plot_width - pos - 1));
+    
+    console.log(`${type.padEnd(14)} ${left}●${right} ${stats.mean.toFixed(3)}`);
+  });
+  
+  console.log(' '.repeat(15) + '|'.padStart(20) + '|'.padStart(20));
+  console.log(' '.repeat(15) + scale_min.toFixed(1).padStart(20) + 
+              scale_max.toFixed(1).padStart(20));
+}
+
+/**
+ * Create environment comparison plot
+ */
+function plotEnvironmentComparison(galaxy_results) {
+  console.log("\n=== M(r) EXPONENT by ENVIRONMENT ===\n");
+  
+  // Group by environment
+  const by_env = {};
+  galaxy_results.forEach(g => {
+    if (!by_env[g.environment]) by_env[g.environment] = [];
+    by_env[g.environment].push(g.M_r_exponent);
+  });
+  
+  // Calculate statistics
+  const env_stats = {};
+  for (const [env, exps] of Object.entries(by_env)) {
+    const mean = exps.reduce((a, b) => a + b) / exps.length;
+    const std = Math.sqrt(
+      exps.reduce((sum, e) => sum + Math.pow(e - mean, 2), 0) / exps.length
+    );
+    env_stats[env] = { mean, std, n: exps.length, exps };
+  }
+  
+  // Categorize environments
+  const categories = {
+    'Isolated': [],
+    'Group': [],
+    'Cluster': []
+  };
+  
+  for (const [env, stats] of Object.entries(env_stats)) {
+    if (env === 'Isolated') {
+      categories['Isolated'].push({ env, stats });
+    } else if (env.includes('Cluster')) {
+      categories['Cluster'].push({ env, stats });
+    } else {
+      categories['Group'].push({ env, stats });
+    }
+  }
+  
+  // Print by category
+  for (const [category, envs] of Object.entries(categories)) {
+    if (envs.length === 0) continue;
+    
+    console.log(`\n${category}:`);
+    console.log("─".repeat(60));
+    
+    envs.forEach(({ env, stats }) => {
+      console.log(
+        `  ${env.padEnd(20)} N=${stats.n.toString().padStart(2)}  ` +
+        `mean=${stats.mean.toFixed(3)}  σ=${stats.std.toFixed(3)}`
+      );
+    });
+    
+    // Category average
+    const all_exps = envs.flatMap(e => e.stats.exps);
+    const cat_mean = all_exps.reduce((a, b) => a + b) / all_exps.length;
+    const cat_std = Math.sqrt(
+      all_exps.reduce((sum, e) => sum + Math.pow(e - cat_mean, 2), 0) / all_exps.length
+    );
+    
+    console.log(`  ${'AVERAGE'.padEnd(20)} N=${all_exps.length.toString().padStart(2)}  ` +
+                `mean=${cat_mean.toFixed(3)}  σ=${cat_std.toFixed(3)}`);
+  }
+  
+  // Comparison
+  console.log("\n\nEnvironmental gradient:");
+  console.log("─".repeat(60));
+  
+  const iso_mean = categories['Isolated'].length > 0 ? 
+    categories['Isolated'].flatMap(e => e.stats.exps).reduce((a, b) => a + b) / 
+    categories['Isolated'].flatMap(e => e.stats.exps).length : null;
+    
+  const grp_mean = categories['Group'].length > 0 ? 
+    categories['Group'].flatMap(e => e.stats.exps).reduce((a, b) => a + b) / 
+    categories['Group'].flatMap(e => e.stats.exps).length : null;
+    
+  const cls_mean = categories['Cluster'].length > 0 ? 
+    categories['Cluster'].flatMap(e => e.stats.exps).reduce((a, b) => a + b) / 
+    categories['Cluster'].flatMap(e => e.stats.exps).length : null;
+  
+  if (iso_mean && grp_mean && cls_mean) {
+    console.log(`Isolated → Group → Cluster`);
+    console.log(`${iso_mean.toFixed(3)}     ${grp_mean.toFixed(3)}    ${cls_mean.toFixed(3)}`);
+    console.log(`\nDifferences:`);
+    console.log(`  Group - Isolated:  ${(grp_mean - iso_mean).toFixed(3)}`);
+    console.log(`  Cluster - Isolated: ${(cls_mean - iso_mean).toFixed(3)}`);
+    console.log(`  Cluster - Group:    ${(cls_mean - grp_mean).toFixed(3)}`);
+  }
+}
+
+/**
+ * Create summary statistics table
+ */
+function createSummaryTable(results) {
+  console.log("\n=== SUMMARY STATISTICS ===\n");
+  
+  const exponents = results.map(r => r.M_r_exponent);
+  const r_squareds = results.map(r => r.M_r_R_squared);
+  
+  const mean_exp = exponents.reduce((a, b) => a + b) / exponents.length;
+  const std_exp = Math.sqrt(
+    exponents.reduce((sum, e) => sum + Math.pow(e - mean_exp, 2), 0) / exponents.length
+  );
+  const median_exp = [...exponents].sort((a, b) => a - b)[Math.floor(exponents.length / 2)];
+  
+  const mean_r2 = r_squareds.reduce((a, b) => a + b) / r_squareds.length;
+  
+  console.log(`Total galaxies analyzed: ${results.length}`);
+  console.log(`\nM(r) exponent statistics:`);
+  console.log(`  Mean:   ${mean_exp.toFixed(3)} ± ${std_exp.toFixed(3)}`);
+  console.log(`  Median: ${median_exp.toFixed(3)}`);
+  console.log(`  Range:  ${Math.min(...exponents).toFixed(3)} to ${Math.max(...exponents).toFixed(3)}`);
+  console.log(`\nFit quality:`);
+  console.log(`  Mean R²: ${mean_r2.toFixed(4)}`);
+  console.log(`  R² > 0.90: ${r_squareds.filter(r => r > 0.90).length}/${results.length} ` +
+              `(${(100 * r_squareds.filter(r => r > 0.90).length / results.length).toFixed(0)}%)`);
+  
+  // Proximity to theoretical values
+  const near_05 = exponents.filter(e => Math.abs(e - 0.5) < 0.1).length;
+  const near_187 = exponents.filter(e => Math.abs(e - 1.878) < 0.05).length;
+  
+  console.log(`\nProximity to key values:`);
+  console.log(`  |exponent - 0.5| < 0.1:   ${near_05}/${results.length} ` +
+              `(${(100 * near_05 / results.length).toFixed(0)}%)`);
+  console.log(`  |exponent - 1.878| < 0.05: ${near_187}/${results.length} ` +
+              `(${(100 * near_187 / results.length).toFixed(0)}%)`);
+}
+
+// ============================================================================
+// EXPORT FUNCTIONS
+// ============================================================================
+
+// Make functions available globally
+if (typeof window !== 'undefined') {
+  window.createScatterPlot = createScatterPlot;
+  window.createHistogram = createHistogram;
+  window.plotMassExponentTrend = plotMassExponentTrend;
+  window.plotMorphologyComparison = plotMorphologyComparison;
+  window.plotEnvironmentComparison = plotEnvironmentComparison;
+  window.createSummaryTable = createSummaryTable;
+}
+
+console.log("Visualization functions loaded!");
+console.log("Available functions:");
+console.log("  - createScatterPlot(x, y, options)");
+console.log("  - createHistogram(values, options)");
+console.log("  - plotMassExponentTrend(galaxy_results)");
+console.log("  - plotMorphologyComparison(galaxy_results)");
+console.log("  - plotEnvironmentComparison(galaxy_results)");
+console.log("  - createSummaryTable(results)");
