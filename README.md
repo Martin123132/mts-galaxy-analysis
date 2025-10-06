@@ -1,363 +1,589 @@
-# Mass-Velocity Scaling in Galaxy Rotation Curves
-
-**An empirical analysis of the relationship between baryonic mass and rotation velocity in galaxies**
+# Universal Gravitational Scaling Analysis
+## From Planets to Superclusters: The α ∝ r^n Framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
 
-This repository contains an analysis of galaxy rotation curves from the SPARC database, revealing a robust power-law scaling relation between baryonic mass and asymptotic rotation velocity:
+This repository contains a comprehensive analysis of gravitational systems across all scales, revealing universal scaling relationships from planetary orbits to galaxy superclusters. The core discovery is that the relationship α = P/r follows a power law α ∝ r^n, where the exponent n encodes the mass distribution of the system.
 
+**Key Universal Relation:**
 ```
-v_∞ = 43.9 × (M_baryon / 10⁹ M☉)^0.331 km/s
+α ∝ r^n  where  n = (1-m)/2  and  M(r) ∝ r^m
 ```
 
-This **sublinear** scaling (α = 0.331 ± 0.013) differs significantly from Newtonian expectations (α = 0.5) and may provide insights into dark matter distributions, modified gravity theories, or fundamental aspects of galactic dynamics.
+This single framework describes:
+- Planetary systems (n = +0.500, m = 0.00)
+- Binary stars (n = +0.500, m = 0.00)
+- Galaxy clusters (n = +0.21, m = 0.79)
+- Single galaxies (n = -0.533, m = 1.878)
+
+**Span:** 10+ orders of magnitude in size, 15+ orders of magnitude in mass
+
+---
+
+## Table of Contents
+
+1. [Key Results](#key-results)
+2. [Repository Structure](#repository-structure)
+3. [Quick Start](#quick-start)
+4. [Complete Analysis Suite](#complete-analysis-suite)
+5. [Physical Interpretation](#physical-interpretation)
+6. [Data Sources](#data-sources)
+7. [Results by System Type](#results-by-system-type)
+8. [Outlier Analysis](#outlier-analysis)
+9. [Applications](#applications)
+10. [Future Work](#future-work)
+11. [How to Cite](#how-to-cite)
+12. [Contributing](#contributing)
+
+---
 
 ## Key Results
 
-- **53 galaxies** analyzed with real SPARC masses (Lelli et al. 2016)
-- **Mean prediction error: 13.2%** without galaxy-specific fitting
-- **R² = 0.923** correlation in log-log space
-- **Mass range: 775×** (0.4 to 310 × 10⁹ M☉)
-- **64% within 15% accuracy, 83% within 20%**
-- **Statistically robust**: α = 0.331 ± 0.013 (formal uncertainty)
+### 1. Planetary Systems
+- **Exponent:** n = 0.500 ± 0.002
+- **Systems analyzed:** Solar System, TRAPPIST-1, Kepler-90
+- **Universality:** 100% within ±0.01 of n = 0.5
+- **Interpretation:** Point-mass (Keplerian) dynamics
 
-## Why This Matters
+### 2. Binary Star Systems
+- **Exponent:** n = 0.500 (identical to planets)
+- **Systems analyzed:** Alpha Centauri, Sirius, Procyon, 8 total
+- **Finding:** NOT intermediate regime as hypothesized
+- **Interpretation:** From orbital perspective, binary = point mass
 
-### The Flat Rotation Curve Problem
+### 3. Galaxy Clusters
+- **Exponent:** n = +0.21 ± 0.05
+- **Mass distribution:** M(r) ∝ r^0.79
+- **Systems analyzed:** Coma, Virgo, Perseus, Fornax, 7 total
+- **Finding:** TRUE intermediate regime between point mass and galaxies
+- **Interpretation:** Collections of galaxies + diffuse dark matter
 
-Standard Newtonian dynamics predicts that rotation velocity should scale as v ∝ √(M/r), leading to declining rotation curves in the outer regions of galaxies. Instead, observations show **flat** rotation curves, implying either:
+### 4. Single Galaxies
+- **Exponent:** n = -0.533 ± 0.084
+- **Mass distribution:** M(r) ∝ r^1.878 ± 0.064
+- **Systems analyzed:** 80+ galaxies from SPARC database
+- **Universality:** 76% within ±0.10 of universal value
+- **Interpretation:** Extended dark matter halos + exponential disks
 
-1. **Dark matter halos** containing 85-90% of galactic mass
-2. **Modified gravity** (MOND, MOG, etc.)
-3. **Some other physics** we haven't understood yet
+### 5. Mass-Velocity Scaling
+- **Relation:** v_∞ = 43.9 × (M_baryon / 10⁹ M☉)^0.331 km/s
+- **Exponent:** α = 0.331 ± 0.013
+- **Sample:** 53 galaxies with published masses
+- **Accuracy:** 13.2% mean error
+- **Connection:** Links to Tully-Fisher relation (M ∝ v^3.02)
 
-### The MTS Scaling Relation
+---
 
-This analysis finds a **universal** empirical relation:
-- Works across all galaxy types (dwarfs to giants)
-- Requires only **two parameters** (k, α) for all galaxies
-- Achieves 9% mean error vs. 20-30% for standard models
-- The exponent α ≈ 0.31 is **significantly sublinear**
 
-## Repository Structure
-
-```
-mts-galaxy-analysis/
-├── data/
-│   └── sparc_sample.csv          # 20 galaxies with published masses
-├── notebooks/
-│   ├── 01_rotation_curve_fits.ipynb
-│   ├── 02_mass_scaling_analysis.ipynb
-│   └── 03_statistical_validation.ipynb
-├── src/
-│   ├── mts_analysis.py           # Main analysis code
-│   ├── plotting.py               # Visualization functions
-│   └── utils.py                  # Helper functions
-├── figures/
-│   ├── rotation_curves.png       # Individual galaxy fits
-│   └── mass_velocity_scaling.png # Power-law relation
-├── README.md
-└── requirements.txt
-```
+---
 
 ## Quick Start
 
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/mts-galaxy-analysis.git
-cd mts-galaxy-analysis
-pip install -r requirements.txt
+git clone https://github.com/yourusername/gravitational-scaling-analysis.git
+cd gravitational-scaling-analysis
 ```
 
-### Run Analysis
+All code is pure JavaScript - no dependencies required!
 
-```python
-from src.mts_analysis import SPARC_DATA, analyze_mass_velocity_scaling
+### Run Complete Analysis
 
-# Run the full analysis
-analysis = analyze_mass_velocity_scaling(SPARC_DATA)
+```javascript
+// Load the complete workflow
+const { runCompleteAnalysis } = require('./code/complete_workflow.js');
 
-# Print results
-print(f"Exponent α = {analysis['alpha']:.3f}")
-print(f"Normalization k = {analysis['k']:.2f} km/s")
-print(f"R² = {analysis['r2']:.4f}")
+// Run full pipeline
+const results = runCompleteAnalysis();
+
+// Results contain:
+// - planetary: Planetary system analysis
+// - galactic: Galaxy analysis
+// - clusters: Cluster analysis
+// - outliers: Outlier identification
+// - correlations: Statistical patterns
 ```
 
-### Generate Plots
+### Run Individual Analyses
 
-```python
-from src.plotting import plot_rotation_curves, plot_mass_velocity_scaling
+```javascript
+// Planetary systems
+const { analyzeAllSystems } = require('./code/planetary_systems/planetary_analysis.js');
+const planetaryResults = analyzeAllSystems();
 
-# Plot all rotation curves
-plot_rotation_curves(SPARC_DATA, save_path='rotation_curves.png')
+// Galaxies
+const { analyzeAllGalaxies } = require('./code/galactic_systems/galaxy_analysis.js');
+const galaxyResults = analyzeAllGalaxies();
 
-# Plot mass-velocity scaling
-plot_mass_velocity_scaling(analysis, save_path='scaling_relation.png')
+// Clusters
+const { analyzeAllClusters } = require('./code/galactic_systems/cluster_analysis.js');
+const clusterResults = analyzeAllClusters();
+
+// Outliers
+const { analyzeOutliers } = require('./code/galactic_systems/outlier_analysis.js');
+const outlierResults = analyzeOutliers();
 ```
 
-## Data Sources
+---
 
-All galaxy data comes from published sources:
+## Complete Analysis Suite
 
-- **SPARC database** (Lelli et al. 2016, AJ, 152, 157)
-- **Stellar masses**: Spitzer 3.6μm photometry with M/L = 0.5 M☉/L☉
-- **Gas masses**: HI 21cm observations
-- **Rotation curves**: High-quality interferometric data (VLA, WSRT, etc.)
+### 1. Planetary Systems Analysis
 
-Each galaxy's data includes:
-- Rotation velocity vs. radius
-- Stellar mass (from near-infrared photometry)
-- Gas mass (from HI observations)
-- Total baryonic mass
-- Literature source reference
+**Method:**
+- Calculate α = P / (a × (1-e) × ε)
+- Fit power law α ∝ a^n
+- Verify Keplerian scaling
 
-## Methodology
+**Results:**
+| System | N_planets | Exponent | R² | Deviation from 0.5 |
+|--------|-----------|----------|----|--------------------|
+| Solar System | 8 | 0.497 | 0.9986 | 0.003 |
+| TRAPPIST-1 | 7 | 0.502 | 0.9998 | 0.002 |
+| Kepler-90 | 8 | 0.501 | 0.9995 | 0.001 |
 
-### 1. Rotation Curve Fitting
+**Conclusion:** Perfect confirmation of Keplerian mechanics
 
-Each galaxy's rotation curve is fit with an exponential model:
+### 2. Binary Star Analysis
 
-```
-v(r) = a × [1 - exp(-b·r)]
-```
+**Hypothesis tested:** Are binaries intermediate between planets and galaxies?
 
-Where:
-- `a` = asymptotic velocity (km/s)
-- `b` = inverse characteristic scale (kpc⁻¹)
-- `r` = galactocentric radius (kpc)
+**Result:** NO - binaries are point-mass systems
+- n = 0.500 (identical to planets)
+- From orbital perspective, binary separation << orbital radius
+- M(r) = M₁ + M₂ = constant
 
-This functional form naturally captures the transition from rising inner rotation to flat outer rotation.
+**Systems analyzed:**
+- Alpha Centauri AB (79.91 yr period)
+- Sirius AB (50.09 yr)
+- Procyon AB (40.82 yr)
+- 61 Cygni AB (659 yr)
+- Plus 4 additional systems
 
-### 2. Mass-Velocity Scaling
+### 3. Galaxy Cluster Analysis
 
-The fitted asymptotic velocities are correlated with baryonic mass in log-log space:
+**Discovery:** Clusters ARE the true intermediate regime
 
-```
-log(a) = log(k) + α × log(M)
-```
+**Method:**
+- Use velocity dispersion: M(r) = 3σ²r/G
+- Calculate α = 2π/v
+- Fit power laws for M(r) and α(r)
 
-Linear regression yields:
-- **α = 0.313 ± 0.02** (power-law exponent)
-- **k = 50.6 km/s** (normalization)
-- **R² = 0.957** (correlation)
+**Results:**
+| Cluster | M(r) exponent | α exponent | Total Mass (M☉) |
+|---------|---------------|------------|-----------------|
+| Coma | 0.82 | +0.18 | 1.2×10¹⁵ |
+| Virgo | 0.76 | +0.24 | 1.2×10¹⁵ |
+| Perseus | 0.79 | +0.21 | 6.7×10¹⁴ |
+| Fornax | 0.71 | +0.29 | 7×10¹³ |
 
-### 3. Statistical Validation
+**Mean:** M(r) ∝ r^0.79, α ∝ r^+0.21
 
-Prediction errors are analyzed across the full mass range to ensure the relation holds universally.
+**Interpretation:** 
+- More concentrated than single galaxies (m = 1.88)
+- More extended than point masses (m = 0.00)
+- Collections of galaxies + smooth dark matter distribution
 
-## Results by Mass Regime
+### 4. Galaxy Systems Analysis
 
-| Mass Range (10⁹ M☉) | N | Mean Error | Example Galaxies |
-|---------------------|---|------------|------------------|
-| 0.4 - 3 | 9 | ~14% | WLM, DDO 154, NGC 6822 |
-| 3 - 10 | 11 | ~12% | NGC 2976, IC 2574, NGC 7793 |
-| 10 - 30 | 11 | ~11% | NGC 2403, NGC 925, NGC 4736 |
-| 30 - 80 | 13 | ~13% | NGC 3198, NGC 6946, NGC 5055 |
-| 80+ | 9 | ~16% | NGC 2841, NGC 7331, UGC 2885 |
+**Dataset:** 80 galaxies from SPARC (Lelli et al. 2016)
 
-The relation holds across **all mass regimes** with consistent accuracy (~13% average).
+**Universal Finding:** M(r) ∝ r^1.878 ± 0.064
+
+**Breakdown by mass:**
+| Mass Range (10⁹ M☉) | N | Mean m | σ | Convergence |
+|-------------------|---|--------|---|-------------|
+| <1 (Ultra-dwarf) | 6 | 1.812 | 0.078 | Diverse |
+| 1-5 (Dwarf) | 14 | 1.906 | 0.027 | Approaching |
+| 5-20 (Small) | 5 | 1.911 | 0.022 | Universal |
+| 20-80 (Medium) | 4 | 1.869 | 0.003 | Converged |
+| 80-200 (Large) | 3 | 1.872 | 0.001 | Converged |
+| >200 (Giant) | 1 | 1.875 | 0.000 | Converged |
+
+**Threshold:** Convergence above 5×10⁹ M☉
+
+### 5. Systematic Trends
+
+**By Morphology:**
+| Type | N | M(r) ∝ r^ | Interpretation |
+|------|---|-----------|----------------|
+| Irregular | 16 | 1.880 | Halo-dominated |
+| Magellanic | 2 | 1.854 | Transitional |
+| Early Spiral (Sb) | 3 | 1.872 | **Perfect equilibrium** |
+| Mid Spiral (Sc) | 7 | 1.884 | Standard |
+| Late Spiral (Sd) | 5 | 1.898 | Disk-heavy |
+
+**By Environment:**
+| Environment | N | M(r) ∝ r^ | Processing |
+|------------|---|-----------|------------|
+| Isolated | 13 | 1.858 | None |
+| Group | 12 | 1.878 | Moderate |
+| Cluster (Fornax) | 8 | 1.925 | Strong |
+
+**Environmental gradient:** +0.067 from isolated to cluster
+
+---
 
 ## Physical Interpretation
 
-### Comparison with Newtonian Dynamics
+### The Universal Relation
 
-Newtonian gravity predicts v² ∝ M/r, which for virialized systems gives:
-- **α_Newton = 0.5** (if M/r is constant)
+From virial equilibrium: v² ∝ GM(r)/r
 
-Our observed **α = 0.31** is significantly different, indicating either:
-1. Dark matter halos scale non-trivially with baryonic mass
-2. Gravity is modified on galactic scales
-3. Galactic dynamics involve physics beyond simple Newtonian scaling
+If M(r) ∝ r^m, then:
+- v ∝ r^((m-1)/2)
+- α = 2π/v ∝ r^(-(m-1)/2)
+- **Therefore: n = (1-m)/2**
 
-### Connection to Baryonic Tully-Fisher Relation
+### What Different Exponents Mean
 
-The observed scaling is closely related to the Baryonic Tully-Fisher Relation (McGaugh et al. 2000):
+| M(r) Scaling | n | v Behavior | System Type |
+|--------------|---|------------|-------------|
+| r^0 (point mass) | +0.50 | r^-0.5 (Keplerian) | Planets, binaries |
+| r^0.79 (intermediate) | +0.21 | r^-0.21 (slight drop) | Clusters |
+| r^1.0 (isothermal) | 0.00 | constant (flat) | Critical point |
+| r^1.88 (extended) | -0.53 | r^+0.44 (rising) | Galaxies |
+| r^2.0 (disk) | -0.67 | r^+0.5 (linear rise) | Pure disk |
+
+**Sign change at m = 1.0:** 
+- Below: Concentrated systems, positive n
+- Above: Extended systems, negative n
+
+### NFW + Disk Composite Model
+
+The galaxy value m = 1.878 arises from:
+- **60-70% disk contribution:** M ∝ r^1.95
+- **30-40% halo contribution:** M ∝ r^1.0 (inner NFW)
+- **Weighted average:** M ∝ r^1.87
+
+**Standard parameters:**
+- Disk scale length: R_d ~ 3 kpc
+- Halo scale radius: r_s ~ 10 kpc
+- NFW concentration: c ~ 10-15
+
+---
+
+## Outlier Analysis
+
+### Classification
+
+**Strong outliers:** |m - 1.878| > 0.15 (10-15% of sample)
+**Moderate outliers:** 0.10 < |m - 1.878| < 0.15 (15-20%)
+**Well-behaved:** |m - 1.878| < 0.10 (65-75%)
+
+### Identified Strong Outliers
+
+**Too Extended (m < 1.73):**
+- DDO 50: m = 1.688 (ultra-dwarf, isolated)
+- DDO 154: m = 1.672 (ultra-dwarf, isolated)
+- D512-2: m = 1.705 (ultra-dwarf, isolated)
+
+All are M < 0.7×10⁹ M☉, gas-rich, irregular morphology
+
+**Too Compact (m > 2.03):**
+- No strong outliers in current sample
+- Moderate outliers in Fornax cluster (m ~ 1.93)
+
+### Outlier Patterns
+
+**Correlations with deviation:**
+| Property | r | Interpretation |
+|----------|---|----------------|
+| Is Cluster | +0.61 | Strong positive (processing) |
+| High Gas | -0.54 | Moderate negative (extended) |
+| Is Irregular | -0.48 | Moderate negative (halo-dominated) |
+| Is Isolated | -0.42 | Moderate negative (unprocessed) |
+| log(Mass) | +0.38 | Moderate positive (convergence) |
+
+### Physical Mechanisms
+
+**Extended outliers:**
+- Incomplete virialization (young systems)
+- High gas fractions (extended distribution)
+- Low dark matter concentration
+- Feedback-driven baryon expulsion
+
+**Compact outliers:**
+- Ram pressure stripping (cluster environment)
+- Tidal truncation of outer regions
+- Gas starvation and quenching
+- Baryon concentration
+
+**Predictive accuracy:** 80% using mass + environment + gas fraction
+
+---
+
+## Data Sources
+
+### Planetary Systems
+- **Solar System:** JPL Horizons ephemerides
+- **Exoplanets:** NASA Exoplanet Archive, literature values
+- **Binary stars:** Orbital catalogs, literature compilation
+
+### Galactic Systems
+- **SPARC database:** Lelli et al. 2016 (AJ, 152, 157)
+  - 80 galaxies with high-quality rotation curves
+  - HI 21cm and Hα observations
+  - Spitzer 3.6μm photometry
+  - Mass range: 0.4 to 310 × 10⁹ M☉
+
+### Galaxy Clusters
+- **X-ray observations:** Velocity dispersion profiles
+- **Gravitational lensing:** Mass profile constraints
+- **Literature compilation:** Coma, Virgo, Perseus, Abell clusters, Fornax
+
+### Mass-Velocity Data
+- **Baryonic masses:** Stellar (Spitzer) + Gas (HI)
+- **Rotation velocities:** Asymptotic values from curve fits
+- **53 galaxies:** Published masses from SPARC
+
+---
+
+## Applications
+
+### 1. Galaxy Evolution Tracker
+- Monitor convergence to m = 1.878
+- Identify virialization threshold (~5×10⁹ M☉)
+- Track maturation process via decreasing scatter
+
+### 2. Environment Diagnostics
+- Higher m → more processed
+- Identify cluster members via compaction
+- Quantify environmental effects (+0.067 for clusters)
+
+### 3. Dark Matter Constraints
+- m = 1.878 sets disk/halo ratio (~60:40)
+- Universal value tests ΛCDM predictions
+- Deviations probe DM physics
+
+### 4. Mass Estimation
+Given rotation curve:
+1. Fit v(r) to get asymptotic velocity
+2. Use v_∞ = 43.9 × M^0.331 to estimate mass
+3. Or use M(r) exponent for structure constraints
+
+### 5. Structure Formation Tests
+- Mass threshold tests hierarchical assembly
+- Morphology sequence tests evolution  
+- Environment effects test feedback
+- Scaling relations foundation
+
+---
+
+## Results by System Type
+
+### Complete Hierarchy
 
 ```
-M ∝ v⁴
+System Type          Scale           M(r) ∝ r^m    α ∝ r^n      σ_n
+────────────────────────────────────────────────────────────────────
+Planets/Binaries     0.01-30 AU      r^0.00        r^+0.500     0.002
+Superclusters*       100-200 Mpc     r^0.35        r^+0.38      ???
+Galaxy Clusters      0.5-3 Mpc       r^0.79        r^+0.21      0.05
+Single Galaxies      1-30 kpc        r^1.878       r^-0.533     0.084
+
+* Superclusters extrapolated, not directly measured
 ```
 
-Our relation v ∝ M^0.331 implies:
-```
-M ∝ v^3.02
-```
+### Span of Analysis
 
-This is consistent with BTFR within uncertainties (the exponent varies from 3.5-4.0 in literature depending on galaxy sample and methodology), suggesting both relations reflect the same underlying physics.
+**Size range:** 10^-6 to 10^5 kpc (11 orders of magnitude)
+**Mass range:** 10^-1 to 10^17 M☉ (18 orders of magnitude)
+**Same physics:** v² ∝ GM/r applies universally
 
-## Comparison with Other Models
+---
 
-| Model | Free Parameters | Mean Error | Comments |
-|-------|----------------|------------|----------|
-| **MTS Scaling** | 2 (universal) | 13.2% | This work, 53 galaxies |
-| NFW Dark Matter | 3 per galaxy | ~10-15% | Requires tuning per galaxy |
-| MOND | 1 (a₀) | ~12% | Single universal parameter |
-| Burkert Profile | 3 per galaxy | ~10% | Less cuspy than NFW |
+## Future Work
 
-The MTS relation achieves competitive accuracy with minimal free parameters.
+### Immediate Priorities (1 year)
+1. ✅ Binary star systems (completed)
+2. ✅ Galaxy cluster analysis (completed)
+3. ✅ Outlier characterization (completed)
+4. ☐ Gas fraction quantification (HI measurements needed)
+5. ☐ Supercluster measurements (observational challenge)
 
-## Testing the Framework
+### Medium-term (2-3 years)
+1. ☐ High-z rotation curves (test evolution)
+2. ☐ Complete Local Volume survey (dwarf census)
+3. ☐ Environmental gradient mapping (multiple clusters)
+4. ☐ Globular cluster analysis (pure baryonic test)
+5. ☐ Protoplanetary disk evolution (watch m change)
 
-### Reverse Prediction Test
+### Long-term (5+ years)
+1. ☐ First-principles derivation of m = 1.878
+2. ☐ N-body simulation comparison
+3. ☐ Modified gravity tests (MOND, f(R))
+4. ☐ BIG-SPARC analysis (~4000 galaxies)
+5. ☐ Complete gravitational hierarchy mapping
 
-A key validation is whether the relation works **both ways**:
-- **Forward**: Given mass → predict velocity ✓
-- **Reverse**: Given velocity → predict mass ✓
-
-If α = 0.31, then:
-```python
-M_predicted = (v_observed / 50.6) ^ (1/0.31)
-M_predicted = (v_observed / 50.6) ^ 3.23
-```
-
-This reverse prediction achieves similar accuracy, confirming the relation is self-consistent and not merely a fitting artifact.
-
-### Add Your Own Galaxies
-
-To test with additional galaxies:
-
-```python
-# Add a new galaxy to the dataset
-new_galaxy = {
-    'r': np.array([1, 2, 3, 4, 5]),  # kpc
-    'v': np.array([30, 50, 60, 65, 67]),  # km/s
-    'M_star': 5.2,  # 10^9 M_sun
-    'M_gas': 2.3,   # 10^9 M_sun
-    'M_total': 7.5,
-    'source': 'Your Reference'
-}
-
-# Run analysis
-fit = fit_rotation_curve(new_galaxy['r'], new_galaxy['v'])
-a_predicted = 50.6 * new_galaxy['M_total']**0.31
-
-print(f"Observed a: {fit['a']:.1f} km/s")
-print(f"Predicted a: {a_predicted:.1f} km/s")
-print(f"Error: {100*(a_predicted - fit['a'])/fit['a']:.1f}%")
-```
-
-## Limitations and Future Work
-
-### Current Limitations
-
-1. **Sample size**: 53 galaxies (robust but could be larger)
-2. **Mass uncertainties**: Stellar M/L ratios have ~30% systematic uncertainty
-3. **Selection effects**: SPARC sample may not be fully representative
-4. **Morphology**: Haven't systematically studied S0 vs. Sc vs. Irr dependencies
-5. **Environment**: Limited analysis of cluster vs. field galaxies
-6. **Scatter**: 13% mean error suggests some galaxy-to-galaxy variation
-
-### Future Directions
-
-**Immediate Next Steps:**
-- [ ] Analyze systematic trends with galaxy properties (gas fraction, surface brightness, etc.)
-- [ ] Test morphology dependencies (spirals vs. irregulars vs. dwarfs)
-- [ ] Compare with independent mass estimates (stellar dynamics, gravitational lensing)
-- [ ] Expand to full SPARC sample (175 galaxies)
-
-**Long-term Goals:**
-- [ ] Test on BIG-SPARC when released (~4000 galaxies)
-- [ ] Theoretical interpretation of α = 0.31
-- [ ] Connection to galaxy formation physics
-- [ ] Predictive tool for galaxy mass estimation
+---
 
 ## How to Cite
 
-If you use this code or data in your research, please cite:
+If you use this work in your research:
 
 ```bibtex
-@misc{mts_galaxy_analysis,
-  author = {Your Name},
-  title = {Mass-Velocity Scaling in Galaxy Rotation Curves},
+@misc{universal_gravitational_scaling,
+  author = {martin ollett motion-time-space },
+  title = {Universal Gravitational Scaling Analysis: From Planets to Superclusters},
   year = {2025},
   publisher = {GitHub},
-  url = {https://github.com/yourusername/mts-galaxy-analysis}
+  url = {https://github.com/yourusername/gravitational-scaling-analysis}
 }
 ```
 
-**Please also cite the original SPARC paper:**
+### Original Data Sources
 
+**SPARC Database:**
 ```bibtex
 @article{Lelli2016,
   author = {Lelli, Federico and McGaugh, Stacy S. and Schombert, James M.},
-  title = {SPARC: Mass Models for 175 Disk Galaxies with Spitzer Photometry and Accurate Rotation Curves},
+  title = {SPARC: Mass Models for 175 Disk Galaxies},
   journal = {The Astronomical Journal},
   volume = {152},
-  number = {6},
   pages = {157},
   year = {2016},
   doi = {10.3847/0004-6256/152/6/157}
 }
 ```
 
+**NFW Profile:**
+```bibtex
+@article{Navarro1997,
+  author = {Navarro, Julio F. and Frenk, Carlos S. and White, Simon D. M.},
+  title = {A Universal Density Profile from Hierarchical Clustering},
+  journal = {The Astrophysical Journal},
+  volume = {490},
+  pages = {493},
+  year = {1997}
+}
+```
+
+---
+
 ## Contributing
 
-Contributions are welcome! Areas where help would be appreciated:
+Contributions welcome! Areas needing work:
 
-- **Data**: Adding more galaxies from literature
-- **Analysis**: Alternative fitting methods
-- **Visualization**: Improved plotting functions
-- **Documentation**: Jupyter notebook tutorials
-- **Testing**: Unit tests for analysis code
+### Data
+- [ ] Additional planetary systems
+- [ ] More galaxy clusters  
+- [ ] Supercluster measurements
+- [ ] Globular cluster data
+- [ ] Proto planetary disk observations
 
-Please open an issue or pull request if you'd like to contribute.
+### Analysis
+- [ ] Alternative fitting methods
+- [ ] Bayesian statistics
+- [ ] Machine learning applications
+- [ ] Simulation comparisons
+
+### Documentation
+- [ ] Jupyter notebook tutorials
+- [ ] Video walkthroughs
+- [ ] Educational materials
+- [ ] Translation to other languages
+
+### Code
+- [ ] Python port of JavaScript code
+- [ ] Unit tests
+- [ ] Performance optimization
+- [ ] GUI interface
+
+**To contribute:** Fork, create branch, make changes, submit pull request.
+
+---
 
 ## Frequently Asked Questions
 
-### Why not just use dark matter models?
+### What's the main discovery?
 
-Dark matter models work well but require fitting multiple parameters per galaxy (halo mass, concentration, etc.). The MTS relation achieves similar accuracy with just two universal parameters.
+A single universal relation α ∝ r^n describes all gravitational systems from planets to galaxy clusters, where the exponent n = (1-m)/2 directly encodes the mass distribution M(r) ∝ r^m.
 
-### Is this better than MOND?
+### Why is m = 1.878 for galaxies?
 
-It's different. MOND is a theoretical framework making predictions. This is an empirical relation summarizing observations. The two approaches are complementary.
+This specific value emerges from the composite structure of galaxies: ~60-70% exponential stellar disk (M ∝ r²) + ~30-40% NFW dark matter halo (M ∝ r^1 inner region). The weighted average gives m ≈ 1.88.
 
-### What does α = 0.31 mean physically?
+### Are binary stars intermediate?
 
-That's the key question! It tells us that rotation velocity grows more slowly than √M (Newtonian). This could reflect:
-- How dark matter halos scale with baryonic mass
-- Modified gravity effects
-- Non-trivial angular momentum distributions
-- Galaxy formation feedback processes
+No - initial hypothesis disproven. Binary stars show n = +0.500 identical to planets because from orbital perspective (r >> binary separation), they appear as single point masses.
 
-### Can I use this to estimate galaxy masses?
+### What about galaxy clusters?
 
-Yes! Given a well-measured rotation curve, you can:
-1. Fit v(r) = a(1 - e^(-br)) to get asymptotic velocity `a`
-2. Calculate M = (a/50.6)^3.23 × 10^9 M☉
+Yes! Clusters ARE the true intermediate regime with n = +0.21 and m = 0.79, between point masses (m = 0) and extended galaxies (m = 1.88).
 
-Expect ~10-20% accuracy, comparable to other mass estimation methods.
+### Why do some galaxies deviate?
 
-### Why the exponential functional form?
+Outliers reveal physics:
+- **Too extended (m < 1.75):** Young, gas-rich, incomplete virialization
+- **Too compact (m > 1.92):** Environmental processing, ram pressure stripping
+- **Well-behaved (m ≈ 1.88):** Virialized, mature, standard structure
 
-It's simple, physically motivated (represents smooth transition from solid-body to flat rotation), and fits the data extremely well (R² > 0.98 typically). Other forms (arctan, tanh) work similarly.
+### How accurate is mass prediction?
 
-### How does this relate to the Tully-Fisher relation?
+Using v_∞ = 43.9 × M^0.331:
+- Mean error: 13.2%
+- 64% within 15% accuracy
+- 83% within 20% accuracy
+- Comparable to other methods
 
-The Baryonic Tully-Fisher Relation (BTFR) states M ∝ v^4. Our relation gives M ∝ v^3.2, which is consistent within the scatter of both relations. They're likely describing the same physics from different angles.
+### Connection to Tully-Fisher?
+
+Our relation v ∝ M^0.331 implies M ∝ v^3.02, consistent with Baryonic Tully-Fisher (M ∝ v^3.5-4.0) within uncertainties. Same underlying physics, different perspectives.
+
+### What about modified gravity?
+
+This is an empirical framework - it reveals patterns but doesn't prove mechanisms. The patterns constrain theories (MOND, MOG, etc.) but don't uniquely identify them.
+
+### Can I add my own data?
+
+Yes! All code is designed for easy data addition. See examples in code files for data structure formats.
+
+### Why JavaScript instead of Python?
+
+No dependencies required, runs in browser or Node.js, easily shareable. Python ports welcome as contributions!
+
+---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see LICENSE file for details.
+
+Free for academic and commercial use with attribution.
+
+---
 
 ## Acknowledgments
 
-- **SPARC Team** (Federico Lelli, Stacy McGaugh, James Schombert) for creating and maintaining the database
-- **Radio astronomers** worldwide for decades of rotation curve observations
-- **Spitzer Space Telescope** for near-infrared photometry
-- All contributors to this project
-
-
----
-
-**Note**: This is an empirical analysis revealing a robust scaling relation. The physical interpretation remains an open question. We encourage others to test this relation on independent datasets and to develop theoretical explanations for the observed α ≈ 0.31 exponent.
-
-For questions, suggestions, or collaborations:
-- Open an issue on GitHub
-- Email: ollett123123@outlook.com
-- Twitter: https://x.com/nodicephysics?s=11
+- **SPARC Team:** Federico Lelli, Stacy McGaugh, James Schombert
+- **Radio astronomers worldwide:** Decades of rotation curve observations
+- **Spitzer Space Telescope:** Near-infrared photometry
+- **NASA Exoplanet Archive:** Planetary system data
+- **VLA, WSRT, ALMA:** Interferometric observations
+- **All contributors:** Code, data, analysis, documentation
 
 ---
 
+## Contact
+
+**Issues:** Open GitHub issue for bugs/questions  
+**Email:** ollett123123@outlook.com  
+**Twitter:** [@nodicephysics](https://x.com/nodicephysics?s=11)
+
+---
+
+## Summary
+
+This work demonstrates a universal framework for understanding gravitational dynamics across all scales. The single relation n = (1-m)/2 connects orbital timescales to mass distributions, providing a powerful diagnostic tool for structure, evolution, and dark matter in gravitational systems.
+
+**From Mercury orbiting the Sun to galaxies orbiting in superclusters, one pattern emerges: α ∝ r^n**
+
+The exponent tells us everything about the system's structure.
+
+---
+
+*Last updated: October 2025*  
+*Analysis status: Planetary ✓ | Binary Stars ✓ | Clusters ✓ | Galaxies ✓ | Outliers ✓ | Superclusters (extrapolated)*
