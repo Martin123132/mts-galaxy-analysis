@@ -186,8 +186,8 @@ This indicates that environment acts primarily by preferentially affecting low-m
 yielding lower $m$; cluster dwarfs are stripped and compacted, yielding higher $m$. Massive spirals, by contrast, are largely immune to environmental processing on the timescales probed by our sample, and their $m$ values reflect intrinsic equilibrium structure.
 Figure 4 illustrates this mass–environment degeneracy by plotting $m$ versus $M_{\rm bary}$ with points color-coded by environment. The environmental offset is conspicuous among dwarfs but negligible among giants.
 
-3.4 Perception Bandwidth and Structural Prediction
-Figure 5 presents the perception bandwidth $B_p = M_{\rm bary} \cdot r_{\max} \cdot \tau_{\rm dyn}$ as a function of baryonic mass. 
+3.4 Structural Prediction
+Figure 5 presents the  $B_p = M_{\rm bary} \cdot r_{\max} \cdot \tau_{\rm dyn}$ as a function of baryonic mass. 
 A clear scaling relation emerges: $\log B_p \propto (0.85 \pm 0.05) \log M_{\rm bary}$, with reduced scatter above the mass threshold. 
 Critically, extended outliers systematically lie below this relation, exhibiting lower $B_p$ than expected for their mass.
 To quantify this, we define the residual: $$ \Delta B_p = \log B_p - \langle \log B_p(M) \rangle $$ where the bracket denotes the mean trend. 
