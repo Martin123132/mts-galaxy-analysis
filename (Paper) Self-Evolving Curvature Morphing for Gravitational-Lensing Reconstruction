@@ -58,7 +58,7 @@ This demonstrates that the large-scale organization of gravitational-lensing str
 ---
 
 ## 4. Implications
-1. **Model independence:** The reconstruction requires no explicit mass model or parameterized halo profile, reducing dependence on prior assumptions.  
+1.  The reconstruction requires no explicit mass model or parameterized halo profile, reducing dependence on prior assumptions.  
 2. **Physical analogy:** The iterative relaxation behaves analogously to a tensioned sheet seeking minimal strain energy, consistent with a curvature-based interpretation of gravitational interaction.  
 3. **Structural fidelity:** Emergent multi-core features correspond to observed subclusters, implying that curvature-field evolution inherently reproduces the complex morphology of merging systems.  
 4. **Scalability:** The method can be generalized to multiple clusters to quantify morphological similarity, convergence time, and structural entropy as empirical measures of dynamical state.
