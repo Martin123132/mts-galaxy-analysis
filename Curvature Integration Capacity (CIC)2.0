@@ -10,27 +10,61 @@ defined as $C_{IC}=M_{bary} \\times r_{max} \\times \\tau_{dyn}$. This **dimensi
 Low mass outliers systematically exhibit insufficient $C_{IC}$ for complete virilization.
 
 ## 1. Introduction
-The discovery of flat galaxy rotation curves in the 1970s (Rubin \\& Ford 1970) remains one of the most important observational challenges in astrophysics. The observation that orbital velocities remain approximately constant far beyond the visible stellar disk implies that the enclosed gravitational mass continues to rise with radius well beyond the baryonic distribution. This discrepancy between observed kinematics and luminous matter distribution underpins the standard cosmological model, in which galaxies are embedded in extended halos of non baryonic cold dark matter (CDM). While the $\\Lambda$CDM framework has achieved considerable success in explaining large scale structure formation, its predictions for galaxy scale structure remain contentious. Hydrodynamic simulations such as IllustrisTNG and EAGLE reproduce many global galaxy properties but consistently produce systems with more centrally concentrated mass profiles than observed, and struggle to reproduce the detailed shapes of rotation curves in dwarf and low surface brightness galaxies (Bullock \\& Boylan Kolchin 2017). These discrepancies—collectively known as the “cusp–core” and “too big to fail” problems—highlight a fundamental gap between theoretical expectations and the structure of real galaxies.
+The discovery of flat galaxy rotation curves in the 1970s (Rubin \\& Ford 1970) remains one of the most important observational challenges in astrophysics. 
+The observation that orbital velocities remain approximately constant far beyond the visible stellar disk implies that the enclosed gravitational mass continues to rise with radius well beyond the baryonic distribution.
+This discrepancy between observed kinematics and luminous matter distribution underpins the standard cosmological model, 
+in which galaxies are embedded in extended halos of non baryonic cold dark matter (CDM). 
+While the $\\Lambda$CDM framework has achieved considerable success in explaining large scale structure formation, 
+its predictions for galaxy scale structure remain contentious. 
+Hydrodynamic simulations such as IllustrisTNG and EAGLE reproduce many global galaxy properties but consistently produce systems with more centrally concentrated mass profiles than observed, 
+and struggle to reproduce the detailed shapes of rotation curves in dwarf and low surface brightness galaxies (Bullock \\& Boylan Kolchin 2017). 
+These discrepancies—collectively known as the “cusp–core” and “too big to fail” problems—highlight a fundamental gap between theoretical expectations and the structure of real galaxies.
 
-A complementary approach is to examine galaxy structure without assuming any particular dark matter model, and instead ask what universal patterns emerge directly from observations. A powerful diagnostic of the internal mass distribution is the radial mass–radius relation $M(r) \\propto r^m$, where the exponent $m$ encodes the shape of the cumulative mass profile. A point mass potential yields $m=0$, an isothermal sphere $m=1$, and a pure exponential disk $m=2$. Previous analyses of high quality H I rotation curves from the SPARC database (Lelli et al. 2016) have shown that most well sampled disk galaxies converge to a remarkably consistent exponent $m \\approx 1.878$. This value reflects a composite structure in which baryonic disks contribute roughly 60–70 \\% of the inner potential while a more extended component dominates at large radii.
+A complementary approach is to examine galaxy structure without assuming any particular dark matter model,
+and instead ask what universal patterns emerge directly from observations. 
+A powerful diagnostic of the internal mass distribution is the radial mass–radius relation $M(r) \\propto r^m$, where the exponent $m$ encodes the shape of the cumulative mass profile. 
+A point mass potential yields $m=0$, an isothermal sphere $m=1$, and a pure exponential disk $m=2$. 
+Previous analyses of high quality H I rotation curves from the SPARC database (Lelli et al. 2016) have shown that most well sampled disk galaxies converge to a remarkably consistent exponent $m \\approx 1.878$. 
+This value reflects a composite structure in which baryonic disks contribute roughly 60–70 \\% of the inner potential while a more extended component dominates at large radii.
 
-However, significant scatter in $m$ is observed among low mass systems, suggesting that the universal scaling may not apply across all masses. In particular, dwarf and ultra dwarf galaxies often show more extended mass profiles ($m \\lesssim 1.75$) and larger system to system variation. This raises a fundamental question: is $m \\approx 1.878$ truly universal, or does it emerge only above a critical baryonic mass threshold? In this work, we investigate this question using a sample of 91 late type galaxies spanning more than two orders of magnitude in baryonic mass ($0.4-310 \\times 10^9 \\text{ } M_{\\odot}$). We demonstrate that the apparent universality of $m$ emerges only above a well defined threshold of $M_{crit} \\approx 5 \\times 10^9 \\text{ } M_{\\odot}$. Below this scale, galaxies exhibit diverse mass profiles ($m=1.67-1.85$) consistent with incomplete virilization, strong feedback regulation, and inefficient baryon retention. Above it, the scatter collapses and $m$ converges tightly to $1.878 \\pm 0.034$, indicating a transition to a stable disk plus halo equilibrium structure.
+However, significant scatter in $m$ is observed among low mass systems, suggesting that the universal scaling may not apply across all masses. In particular, 
+dwarf and ultra dwarf galaxies often show more extended mass profiles ($m \\lesssim 1.75$) and larger system to system variation. 
+This raises a fundamental question: is $m \\approx 1.878$ truly universal, o
+r does it emerge only above a critical baryonic mass threshold? In this work, 
+we investigate this question using a sample of 91 late type galaxies spanning more than two orders of magnitude in baryonic mass ($0.4-310 \\times 10^9 \\text{ } M_{\\odot}$).
+We demonstrate that the apparent universality of $m$ emerges only above a well defined threshold of $M_{crit} \\approx 5 \\times 10^9 \\text{ } M_{\\odot}$. 
+Below this scale, galaxies exhibit diverse mass profiles ($m=1.67-1.85$) consistent with incomplete virilization, strong feedback regulation, 
+and inefficient baryon retention. Above it, the scatter collapses and $m$ converges tightly to $1.878 \\pm 0.034$, indicating a transition to a stable disk plus halo equilibrium structure.
 
-We interpret this transition as a fundamental physical scale set by the balance between stellar feedback and gravitational binding energy. At $M_{crit}$, typical virial velocities ($V_{vir} \\approx 50-70 \\text{ km/s}$) approach the regime where supernova energy injection becomes insufficient to unbind gas, allowing efficient cooling, disk formation, and baryon driven contraction of the halo. This same transition is seen in other contexts—including the onset of efficient star formation and changes in the halo concentration–mass relation—suggesting it reflects a genuine physical threshold in galaxy evolution.
+We interpret this transition as a fundamental physical scale set by the balance between stellar feedback and gravitational binding energy. 
+At $M_{crit}$, typical virial velocities ($V_{vir} \\approx 50-70 \\text{ km/s}$) approach the regime where supernova energy injection becomes insufficient to unbind gas, 
+allowing efficient cooling, disk formation, and baryon driven contraction of the halo. 
+This same transition is seen in other contexts—including the onset of efficient star formation and changes in the halo concentration–mass relation—suggesting it reflects a genuine physical threshold in galaxy evolution
 
 To provide additional physical insight, we introduce a simple dimensional quantity we term the **Curvature Integration Capacity ($C_{IC}$)**, defined as
 $$C_{IC}=M_{bary} \\times r_{max} \\times \\tau_{dyn},\\quad \\tau_{dyn}=\\frac{r_{max}}{v_{\\infty}} .$$
-Here $M_{bary}$ is the total baryonic mass, $r_{max}$ the extent of the observed disk, and $v_{\\infty}$ the asymptotic rotation velocity. $C_{IC}$ quantifies a system’s capacity to exchange and integrate gravitational information across its full spatial and temporal extent—in other words, how effectively it “interacts” with its environment. Systems with low $C_{IC}$ fail to equilibrate globally and remain structurally diverse; those above the threshold converge to a universal equilibrium profile.
+Here $M_{bary}$ is the total baryonic mass, $r_{max}$ the extent of the observed disk, 
+and $v_{\\infty}$ the asymptotic rotation velocity. $C_{IC}$ quantifies a system’s capacity to exchange and integrate gravitational information across its full spatial and temporal extent—in other words, 
+how effectively it “interacts” with its environment. Systems with low $C_{IC}$ fail to equilibrate globally and remain structurally diverse; those above the threshold converge to a universal equilibrium profile.
 
-Finally, we compare these observational results with galaxies from the IllustrisTNG cosmological simulation. Applying the same analysis to simulated systems reveals a systematic structural mismatch: simulated galaxies exhibit $m=0.895 \\pm 0.106$, a factor of $\\sim 2$ more concentrated than observed galaxies. This result quantifies the well known cusp–core discrepancy in a single parameter and provides a new diagnostic target for future models. Matching the observed $m$ and $C_{IC}$ distributions may serve as a stringent test of galaxy formation physics and an essential benchmark for next generation simulations.
+Finally, we compare these observational results with galaxies from the IllustrisTNG cosmological simulation. 
+Applying the same analysis to simulated systems reveals a systematic structural mismatch: simulated galaxies exhibit $m=0.895 \\pm 0.106$, a factor of $\\sim 2$ more concentrated than observed galaxies. 
+This result quantifies the well known cusp–core discrepancy in a single parameter and provides a new diagnostic target for future models. 
+Matching the observed $m$ and $C_{IC}$ distributions may serve as a stringent test of galaxy formation physics and an essential benchmark for next generation simulations.
 
 ## 2. Data and Methods
 ### 2.1 Galaxy Sample and Data Sources
-We analyzed a sample of 91 late type disc galaxies drawn primarily from the SPARC database (Lelli et al. 2016) and supplemented with well resolved rotation curves from the literature. The galaxies span more than three orders of magnitude in baryonic mass, from $4 \\times 10^8 \\text{ } M_{\\odot}$ dwarf irregulars to $3.1 \\times 10^{11} \\text{ } M_{\\odot}$ giant spirals, and include isolated field systems, group members, and environmentally processed cluster galaxies.
+We analyzed a sample of 91 late type disc galaxies drawn primarily from the SPARC database (Lelli et al. 2016) and supplemented with well resolved rotation curves from the literature.
+The galaxies span more than three orders of magnitude in baryonic mass, from $4 \\times 10^8 \\text{ } M_{\\odot}$ dwarf irregulars to $3.1 \\times 10^{11} \\text{ } M_{\\odot}$ giant spirals, a
+nd include isolated field systems, group members, and environmentally processed cluster galaxies.
 
-Selection criteria required: (i) spatially resolved H I rotation curves extending beyond the optical radius, (ii) inclination $i > 30^{\\circ}$, and (iii) well constrained stellar mass estimates from $3.6 \\text{ } \\mu\\text{m}$ photometry. Final stellar masses were derived adopting a stellar mass to light ratio $\\Upsilon_*=0.5 \\text{ } M_{\\odot}/L_{\\odot}$. Gas masses were computed as $M_{gas}=1.4 \\text{ } M_{HI}$ to account for helium. The total baryonic mass is then:
+Selection criteria required: (i) spatially resolved H I rotation curves extending beyond the optical radius, (ii) inclination $i > 30^{\\circ}$, 
+and (iii) well constrained stellar mass estimates from $3.6 \\text{ } \\mu\\text{m}$ photometry.
+Final stellar masses were derived adopting a stellar mass to light ratio $\\Upsilon_*=0.5 \\text{ } M_{\\odot}/L_{\\odot}$. Gas masses were computed as $M_{gas}=1.4 \\text{ } M_{HI}$ to account for helium. 
+The total baryonic mass is then:
 $$M_{bary}=M_*+M_{gas}.$$
-For comparison with simulations, we extracted a matched sample of galaxies from the IllustrisTNG 100 simulation at $z=0$ over the same baryonic mass range. Simulated rotation curves were generated by spherically averaging circular velocity profiles:
+For comparison with simulations, we extracted a matched sample of galaxies from the IllustrisTNG 100 simulation at $z=0$ over the same baryonic mass range. 
+Simulated rotation curves were generated by spherically averaging circular velocity profiles:
 $$v_{circ} (r)=\\sqrt{\\frac{GM(<r)}{r}}$$
 and truncated at the observed radial extent of SPARC galaxies to ensure a like for like comparison.
 
@@ -41,7 +75,8 @@ We fit a power law relation of the form
 $$M(r)=A \\text{ } r^{m},$$
 where $m$ is the mass–radius exponent and $A$ is a normalization constant. Fits were performed by linear regression in $\\log$-space:
 $$\\log M(r)=\\log A+m \\text{ } \\log r$$
-over the range $1-25 \\text{ } \\text{kpc}$, where rotation curves are typically well sampled. Uncertainties in $m$ were estimated via bootstrap resampling. For each galaxy we report the best fit exponent $m$, its $1\\sigma$ uncertainty, and the coefficient of determination $R^2$.
+over the range $1-25 \\text{ } \\text{kpc}$, where rotation curves are typically well sampled. Uncertainties in $m$ were estimated via bootstrap resampling.
+For each galaxy we report the best fit exponent $m$, its $1\\sigma$ uncertainty, and the coefficient of determination $R^2$.
 
 **Interpretation of $m$:**
 * $m=0$: point mass Keplerian profile
@@ -53,9 +88,12 @@ Observed galaxies cluster tightly around $m \\approx 1.878$ above a critical mas
 ### 2.3 Curvature Integration Capacity Metric
 To quantify a system’s capacity to integrate the gravitational field across its spatial extent, we introduce the curvature integration capacity, which is a **dimensional physical order parameter**:
 $$C_{IC}=M_{bary} \\times r_{max} \\times \\tau_{dyn},$$
-where $r_{max}$ is the maximum radius probed by the rotation curve and $\\tau_{dyn}=r_{max}/v_{\\infty}$ is the orbital dynamical time based on the asymptotic circular velocity $v_{\\infty}$. We use the relative variation of $C_{IC}$ for diagnostic purposes.
+where $r_{max}$ is the maximum radius probed by the rotation curve and $\\tau_{dyn}=r_{max}/v_{\\infty}$ is the orbital dynamical time based on the asymptotic circular velocity $v_{\\infty}$. 
+We use the relative variation of $C_{IC}$ for diagnostic purposes.
 
-Physically, $C_{IC}$ captures the system’s information integration capacity: galaxies with high $C_{IC}$ can “communicate” curvature information across their full extent and achieve virial equilibrium, while systems with low $C_{IC}$ remain in partially relaxed, feedback dominated states. This metric provides an independent predictor of outlier status and complements the $m$ exponent analysis.
+Physically, $C_{IC}$ captures the system’s information integration capacity: 
+galaxies with high $C_{IC}$ can “communicate” curvature information across their full extent and achieve virial equilibrium, while systems with low $C_{IC}$ remain in partially relaxed, feedback dominated states. 
+This metric provides an independent predictor of outlier status and complements the $m$ exponent analysis.
 
 ### 2.4 Outlier and Environmental Classification
 Galaxies deviating by $|m-1.878| > 0.15$ were flagged as structural outliers. These fall into two categories:
@@ -66,7 +104,9 @@ Environmental classifications were taken from the original SPARC catalog and sup
 
 ## 3. Results
 ### 3.1 Mass Dependent Convergence to Universal Scaling
-Figure 2 presents the mass–radius exponent $m$ as a function of total baryonic mass for our sample of 91 galaxies. The distribution reveals a striking bifurcation: galaxies below $M_{bary} \\approx 5 \\times 10^9 \\text{ } M_{\\odot}$ exhibit diverse exponents with substantial scatter, while those above this threshold converge tightly to a universal value $m \\approx 1.878$.
+Figure 2 presents the mass–radius exponent $m$ as a function of total baryonic mass for our sample of 91 galaxies. 
+The distribution reveals a striking bifurcation: galaxies below $M_{bary} \\approx 5 \\times 10^9 \\text{ } M_{\\odot}$ exhibit diverse exponents with substantial scatter,
+while those above this threshold converge tightly to a universal value $m \\approx 1.878$.
 
 Statistical characterization by mass bin:
 
@@ -78,39 +118,56 @@ Statistical characterization by mass bin:
 | $10–50$ | 12 | 1.878 | 0.018 | Converged to universal value |
 | $> 50$ | 9 | 1.881 | 0.015 | Fully converged |
 
-Below the threshold, the scatter in $m$ is $\\sigma=0.082$—more than four times larger than the scatter above threshold ($\\sigma=0.018$). This reduction in scatter is highly significant: an F test yields $p < 0.001$ for the null hypothesis that the two populations share the same intrinsic dispersion. The mean exponent below threshold ($\\langle m \\rangle=1.71 \\pm 0.08$) is systematically lower than the universal value by $\\Delta m \\approx 0.17$, corresponding to $\\sim 2\\sigma$ given the combined scatter. This offset indicates that low mass galaxies possess more extended mass distributions—consistent with dark matter halos that have undergone less baryon driven contraction.
+Below the threshold, the scatter in $m$ is $\\sigma=0.082$—more than four times larger than the scatter above threshold ($\\sigma=0.018$). 
+This reduction in scatter is highly significant: an F test yields $p < 0.001$ for the null hypothesis that the two populations share the same intrinsic dispersion. 
+The mean exponent below threshold ($\\langle m \\rangle=1.71 \\pm 0.08$) is systematically lower than the universal value by $\\Delta m \\approx 0.17$, corresponding to $\\sim 2\\sigma$ given the combined scatter. 
+This offset indicates that low mass galaxies possess more extended mass distributions—consistent with dark matter halos that have undergone less baryon driven contraction.
 
-**Convergence to universality:** Among galaxies with $M_{bary} > 5 \\times 10^9 \\text{ } M_{\\odot}$, 76 \\% lie within $\\pm 0.10$ of $m=1.878$, and 91 \\% lie within $\\pm 0.15$. By contrast, only 40 \\% of galaxies below threshold fall within $\\pm 0.10$, and their distribution is approximately uniform over the range $m=1.67-1.85$.
+**Convergence to universality:** Among galaxies with $M_{bary} > 5 \\times 10^9 \\text{ } M_{\\odot}$, 76 \\% lie within $\\pm 0.10$ of $m=1.878$, and 91 \\% lie within $\\pm 0.15$. 
+By contrast, only 40 \\% of galaxies below threshold fall within $\\pm 0.10$, and their distribution is approximately uniform over the range $m=1.67-1.85$.
 
-**Transition sharpness:** To assess whether the transition is gradual or abrupt, we computed a rolling mean of $m$ in logarithmic mass bins of width $\\Delta \\log M=0.3 \\text{ dex}$. The steepest gradient occurs between $\\log(M_{bary}/M_{\\odot})=9.5$ and $9.9$, where $\\langle m \\rangle$ increases from 1.79 to 1.87 over less than half a decade in mass. This behavior is more consistent with a threshold or phase transition than with a smooth power law scaling.
+**Transition sharpness:** To assess whether the transition is gradual or abrupt, we computed a rolling mean of $m$ in logarithmic mass bins of width $\\Delta \\log M=0.3 \\text{ dex}$. 
+The steepest gradient occurs between $\\log(M_{bary}/M_{\\odot})=9.5$ and $9.9$, where $\\langle m \\rangle$ increases from 1.79 to 1.87 over less than half a decade in mass. 
+This behavior is more consistent with a threshold or phase transition than with a smooth power law scaling.
 
 **Physical scale correspondence:** The critical mass $M_{crit} \\approx 5 \\times 10^9 \\text{ } M_{\\odot}$ corresponds to a characteristic virial velocity:
 $$V_{vir} \\approx \\left(\\frac{GM_{crit}}{r_{vir}}\\right)^{1/2} \\approx 60 \\text{ } \\text{km } \\text{s}^{-1}$$
-assuming a typical virial radius $r_{vir} \\sim 30 \\text{ kpc}$. This velocity scale is significant: it marks the regime where supernova energy injection $\\sim 10^{51} \\text{ erg}$ per event becomes insufficient to unbind the gas reservoir over a dynamical time. Below this threshold, repeated bursts of star formation can expel gas and prevent baryon driven halo contraction; above it, the potential well retains baryons and permits sustained disk formation.
+assuming a typical virial radius $r_{vir} \\sim 30 \\text{ kpc}$. This velocity scale is significant: 
+it marks the regime where supernova energy injection $\\sim 10^{51} \\text{ erg}$ per event becomes insufficient to unbind the gas reservoir over a dynamical time. 
+Below this threshold, repeated bursts of star formation can expel gas and prevent baryon driven halo contraction; above it, the potential well retains baryons and permits sustained disk formation.
 
 ### 3.2 Outlier Characterization
 We identify 11 galaxies (12 \\% of the sample) as strong outliers with $|m-1.878| > 0.15$. These divide cleanly into two populations with distinct physical origins.
 
 **Extended outliers** ($m < 1.73, N=6$):
-All six galaxies in this category are ultra dwarfs with $M_{bary} < 1.5 \\times 10^9 \\text{ } M_{\\odot}$. Representative examples include DDO 154 ($m=1.672, M=0.82 \\times 10^9 \\text{ } M_{\\odot}$), DDO 168 ($m=1.745, M=1.35 \\times 10^9 \\text{ } M_{\\odot}$), and DDO 133 ($m=1.710, M=1.25 \\times 10^9 \\text{ } M_{\\odot}$). These systems are characterized by:
+All six galaxies in this category are ultra dwarfs with $M_{bary} < 1.5 \\times 10^9 \\text{ } M_{\\odot}$. 
+Representative examples include DDO 154 ($m=1.672, M=0.82 \\times 10^9 \\text{ } M_{\\odot}$), DDO 168 ($m=1.745, M=1.35 \\times 10^9 \\text{ } M_{\\odot}$), 
+and DDO 133 ($m=1.710, M=1.25 \\times 10^9 \\text{ } M_{\\odot}$). These systems are characterized by:
 * High gas fractions ($f_{gas} > 0.80$),
 * Irregular or disrupted morphologies (classified as dIrr or Im),
 * Isolated environments (no nearby massive companions),
 * Extended rotation curves rising continuously to the outermost measured radius.
 
-The low $m$ values indicate that mass continues to grow nearly linearly with radius $M \\propto r^{1.7}$, approaching the disk like limit $M \\propto r^2$ but remaining below it. This suggests that the dark matter halo has not yet contracted in response to baryonic infall—a prediction of standard feedback models for systems with shallow potential wells.
+The low $m$ values indicate that mass continues to grow nearly linearly with radius $M \\propto r^{1.7}$,
+approaching the disk like limit $M \\propto r^2$ but remaining below it. 
+This suggests that the dark matter halo has not yet contracted in response to baryonic infall—a prediction of standard feedback models for systems with shallow potential wells.
 
 **Compact outliers** ($m > 1.92, N=5$):
-Five galaxies exhibit unusually steep mass profiles. Four of these—F568 3, F571 8, F583 1, and FCC 177—are confirmed members of the Fornax cluster ($D \\approx 20 \\text{ Mpc}$). The fifth, UGC 2885 ($m=1.932, M=310 \\times 10^9 \\text{ } M_{\\odot}$), is a field giant spiral in the Perseus–Pisces supercluster. These systems share:
+Five galaxies exhibit unusually steep mass profiles. Four of these—F568 3, F571 8, F583 1, and FCC 177—are confirmed members of the Fornax cluster ($D \\approx 20 \\text{ Mpc}$). 
+The fifth, UGC 2885 ($m=1.932, M=310 \\times 10^9 \\text{ } M_{\\odot}$), is a field giant spiral in the Perseus–Pisces supercluster. These systems share:
 * Low gas fractions ($f_{gas} < 0.10$ for Fornax members),
 * Compact stellar cores with high central surface brightness,
 * Evidence for environmental processing: Fornax dwarfs show truncated H I disks and disturbed kinematics consistent with ram pressure stripping.
 
-The elevated $m$ values suggest that baryonic mass is more centrally concentrated than in typical disk galaxies. For the Fornax dwarfs, this likely reflects gas removal by the intracluster medium, leaving behind a compact stellar remnant. UGC 2885, by contrast, may represent the extreme high mass tail of the disk dominated regime where self gravity has driven particularly efficient angular momentum transport.
+The elevated $m$ values suggest that baryonic mass is more centrally concentrated than in typical disk galaxies. For the Fornax dwarfs, 
+this likely reflects gas removal by the intracluster medium, leaving behind a compact stellar remnant. UGC 2885, by contrast, 
+may represent the extreme high mass tail of the disk dominated regime where self gravity has driven particularly efficient angular momentum transport.
 Table 2 lists properties of all outliers, including environmental classification, gas fraction estimates, and notes on morphology or kinematics.
 
 ### 3.3 Environmental Dependence
-To assess the role of environment in shaping the $m$ exponent distribution, we divided the sample into three categories based on local galaxy density and group membership: isolated field galaxies ($N=23$), group members ($N=45$), and cluster satellites ($N=13$, predominantly Fornax). Mean exponents and dispersions are:
+To assess the role of environment in shaping the $m$ exponent distribution, 
+we divided the sample into three categories based on local galaxy density and group membership: isolated field galaxies ($N=23$), group members ($N=45$), and cluster satellites ($N=13$, predominantly Fornax). 
+Mean exponents and dispersions are:
 
 | Environment | N | $\\langle m \\rangle$ | $\\sigma(m)$ |
 | :---: | :---: | :---: | :---: |
@@ -118,32 +175,52 @@ To assess the role of environment in shaping the $m$ exponent distribution, we d
 | Group | 45 | 1.871 | 0.034 |
 | Cluster | 13 | 1.928 | 0.028 |
 
-The progression from isolated to cluster environments shows a systematic increase of $\\Delta m \\approx +0.10$. However, this effect is mass dependent: when we restrict the comparison to galaxies with $M_{bary} > 10 \\times 10^9 \\text{ } M_{\\odot}$ (where the mass threshold is well exceeded), the environmental gradient reduces to $\\Delta m \\approx +0.03$ and is no longer statistically significant at $2\\sigma$. This indicates that environment acts primarily by preferentially affecting low mass systems. Isolated dwarfs retain their gas and extended halos, yielding lower $m$; cluster dwarfs are stripped and compacted, yielding higher $m$. Massive spirals, by contrast, are largely immune to environmental processing on the timescales probed by our sample, and their $m$ values reflect intrinsic equilibrium structure.
+The progression from isolated to cluster environments shows a systematic increase of $\\Delta m \\approx +0.10$.
+However, this effect is mass dependent: when we restrict the comparison to galaxies with $M_{bary} > 10 \\times 10^9 \\text{ } M_{\\odot}$ (where the mass threshold is well exceeded), 
+the environmental gradient reduces to $\\Delta m \\approx +0.03$ and is no longer statistically significant at $2\\sigma$. 
+This indicates that environment acts primarily by preferentially affecting low mass systems. 
+Isolated dwarfs retain their gas and extended halos, yielding lower $m$; cluster dwarfs are stripped and compacted, yielding higher $m$. Massive spirals, by contrast, 
+are largely immune to environmental processing on the timescales probed by our sample, and their $m$ values reflect intrinsic equilibrium structure.
 Figure 4 illustrates this mass–environment degeneracy by plotting $m$ versus $M_{bary}$ with points color coded by environment. The environmental offset is conspicuous among dwarfs but negligible among giants.
 
 ### 3.4 Structural Prediction
-Figure 5 presents the $C_{IC}=M_{bary} \\cdot r_{max} \\cdot \\tau_{dyn}$ as a function of baryonic mass. A clear scaling relation emerges: $\\log C_{IC} \\propto (0.85 \\pm 0.05) \\log M_{bary}$, with reduced scatter above the mass threshold. Critically, extended outliers systematically lie below this relation, exhibiting lower $C_{IC}$ than expected for their mass.
+Figure 5 presents the $C_{IC}=M_{bary} \\cdot r_{max} \\cdot \\tau_{dyn}$ as a function of baryonic mass. 
+A clear scaling relation emerges: $\\log C_{IC} \\propto (0.85 \\pm 0.05) \\log M_{bary}$, with reduced scatter above the mass threshold. Critically, 
+extended outliers systematically lie below this relation, exhibiting lower $C_{IC}$ than expected for their mass.
 
 To quantify this, we define the residual:
 $$\\Delta C_{IC}=\\log C_{IC}-\\langle \\log C_{IC} (M) \\rangle$$
-where the bracket denotes the mean trend. Extended outliers show $\\langle \\Delta C_{IC} \\rangle=-0.23 \\pm 0.08$, corresponding to a factor of $\\sim 1.7$ deficit in curvature integration capacity. Well behaved galaxies, by contrast, scatter symmetrically around $\\Delta C_{IC}=0$.
+where the bracket denotes the mean trend. Extended outliers show $\\langle \\Delta C_{IC} \\rangle=-0.23 \\pm 0.08$, 
+corresponding to a factor of $\\sim 1.7$ deficit in curvature integration capacity. Well behaved galaxies, by contrast, scatter symmetrically around $\\Delta C_{IC}=0$.
 
-Figure 6 cross plots $C_{IC}$ against the deviation $\\Delta m=m-1.878$. A clear anticorrelation emerges for low mass systems: galaxies with $\\Delta C_{IC} < -0.15$ preferentially exhibit $\\Delta m < -0.10$ (extended profiles), while those with $\\Delta C_{IC} > 0$ cluster near the universal value. A Spearman rank correlation test yields $\\rho=+0.58$ with $p=0.003$, confirming that low curvature integration capacity predicts structural outliers.
+Figure 6 cross plots $C_{IC}$ against the deviation $\\Delta m=m-1.878$. A clear anticorrelation emerges for low mass systems: 
+galaxies with $\\Delta C_{IC} < -0.15$ preferentially exhibit $\\Delta m < -0.10$ (extended profiles), while those with $\\Delta C_{IC} > 0$ cluster near the universal value. 
+A Spearman rank correlation test yields $\\rho=+0.58$ with $p=0.003$, confirming that low curvature integration capacity predicts structural outliers.
 
-Physically, this suggests that systems with insufficient $C_{IC}$ cannot integrate gravitational information across their full extent and thus fail to achieve the equilibrium configuration characterized by $m=1.878$. In the language of dynamical systems, $C_{IC}$ serves as an order parameter distinguishing virialized (high $C_{IC}$, converged $m$) from partially relaxed (low $C_{IC}$, diverse $m$) states.
+Physically, this suggests that systems with insufficient $C_{IC}$ cannot integrate gravitational information across their full extent and thus fail to achieve the equilibrium configuration characterized by $m=1.878$.
+In the language of dynamical systems, $C_{IC}$ serves as an order parameter distinguishing virialized (high $C_{IC}$, converged $m$) from partially relaxed (low $C_{IC}$, diverse $m$) states.
 
 ## 4. Comparison with IllustrisTNG Simulations
 ### 4.1 Simulation Sample and Analysis
-To assess whether state of the art cosmological simulations reproduce the observed mass exponent distribution, we analyzed a matched sample of galaxies from the IllustrisTNG 100 simulation (Pillepich et al. 2018; Nelson et al. 2019) at redshift $z=0$. We selected 23 disk dominated galaxies spanning the same baryonic mass range as our SPARC sample ($0.8 \\times 10^9 < M_{bary} < 170 \\times 10^9 \\text{ } M_{\\odot}$), applying cuts on stellar mass ($M_* > 10^9 \\text{ } M_{\\odot}$), morphology (disk to total ratio $D/T > 0.4$), and numerical resolution (avoiding systems with fewer than $10^4$ stellar particles).
+To assess whether state of the art cosmological simulations reproduce the observed mass exponent distribution, 
+we analyzed a matched sample of galaxies from the IllustrisTNG 100 simulation (Pillepich et al. 2018; Nelson et al. 2019) at redshift $z=0$. 
+We selected 23 disk dominated galaxies spanning the same baryonic mass range as our SPARC sample ($0.8 \\times 10^9 < M_{bary} < 170 \\times 10^9 \\text{ } M_{\\odot}$),
+applying cuts on stellar mass ($M_* > 10^9 \\text{ } M_{\\odot}$), morphology (disk to total ratio $D/T > 0.4$), and numerical resolution (avoiding systems with fewer than $10^4$ stellar particles).
 
-For each simulated galaxy, we computed the spherically averaged cumulative mass profile by binning all particle types (dark matter, gas, stars) in radial shells from $r=1$ to $30 \\text{ kpc}$. Circular velocity profiles were derived as: $v_{circ} (r)=\\sqrt{((GM(<r))/r)}$ and fit with the same power law procedure applied to SPARC data (Section 2.2). To ensure a fair comparison, we restricted fits to the radial range $1-25 \\text{ kpc}$, matching the typical extent of observed H I rotation curves.
+For each simulated galaxy, we computed the spherically averaged cumulative mass profile by binning all particle types (dark matter, gas, stars) in radial shells from $r=1$ to $30 \\text{ kpc}$.
+Circular velocity profiles were derived as: $v_{circ} (r)=\\sqrt{((GM(<r))/r)}$ and fit with the same power law procedure applied to SPARC data (Section 2.2). 
+To ensure a fair comparison, we restricted fits to the radial range $1-25 \\text{ kpc}$, matching the typical extent of observed H I rotation curves.
 
 ### 4.2 Systematic Structural Discrepancy
 Figure 7 presents the distribution of mass–radius exponents for TNG (red) and SPARC (green) galaxies. The two populations are systematically offset with no overlap:
 * **SPARC (observed):** $\\langle m \\rangle=1.878 \\pm 0.084$ (standard deviation)
 * **TNG (simulated):** $\\langle m \\rangle=0.895 \\pm 0.106$
 
-The difference $\\Delta m=0.983$ corresponds to $11.7\\sigma$ when accounting for the combined scatter. Not a single TNG galaxy lies within $\\pm 0.20$ of the SPARC universal value, and conversely, no SPARC galaxy falls below $m=1.75$—the upper tail of the TNG distribution barely reaches $m \\sim 1.1$ for the most massive systems. This represents a factor of two discrepancy in the concentration of mass profiles: TNG galaxies have $M(r) \\propto r^{0.9}$, implying near isothermal structure dominated by dark matter halos at all radii. SPARC galaxies exhibit $M(r) \\propto r^{1.9}$, approaching the exponential disk limit and indicating substantial baryonic contributions ($\\sim 60-70\\%$) to the enclosed mass.
+The difference $\\Delta m=0.983$ corresponds to $11.7\\sigma$ when accounting for the combined scatter.
+Not a single TNG galaxy lies within $\\pm 0.20$ of the SPARC universal value, and conversely, 
+no SPARC galaxy falls below $m=1.75$—the upper tail of the TNG distribution barely reaches $m \\sim 1.1$ for the most massive systems. 
+This represents a factor of two discrepancy in the concentration of mass profiles: TNG galaxies have $M(r) \\propto r^{0.9}$, implying near isothermal structure dominated by dark matter halos at all radii. 
+SPARC galaxies exhibit $M(r) \\propto r^{1.9}$, approaching the exponential disk limit and indicating substantial baryonic contributions ($\\sim 60-70\\%$) to the enclosed mass.
 
 Table 3 provides a detailed statistical comparison:
 
@@ -167,28 +244,47 @@ The structural difference manifests directly in rotation curve shapes. Figure 8 
 * Implies $M(r) \\propto r$—near isothermal halo
 * Dark matter dominates at all radii; weak disk influence
 
-The velocity profiles are qualitatively different: SPARC curves continue rising to $r_{max}$, while TNG curves flatten by $r \\sim 5 \\text{ kpc}$ and remain nearly constant thereafter. This indicates that TNG halos are over concentrated, retaining cuspy NFW like profiles ($\\rho \\propto r^{-1}$) in the inner regions rather than developing the baryon modified cores or extended disks seen in observations.
+The velocity profiles are qualitatively different: SPARC curves continue rising to $r_{max}$, while TNG curves flatten by $r \\sim 5 \\text{ kpc}$ and remain nearly constant thereafter.
+This indicates that TNG halos are over concentrated,
+retaining cuspy NFW like profiles ($\\rho \\propto r^{-1}$) in the inner regions rather than developing the baryon modified cores or extended disks seen in observations.
 
 ### 4.4 Curvature Integration Capacity Deficit in Simulations
 Applying the curvature integration capacity metric to TNG galaxies reveals a systematic deficit relative to SPARC at fixed mass. Figure 9 plots $\\log C_{IC}$ versus $\\log M_{bary}$ for both samples:
 * **SPARC scaling:** $\\log C_{IC}=(0.85 \\pm 0.05) \\log M_{bary}+\\text{const}$
 * **TNG scaling:** $\\log C_{IC}=(0.72 \\pm 0.08) \\log M_{bary}+\\text{const}$
 
-At $M_{bary}=30 \\times 10^9 \\text{ } M_{\\odot}$ (a well sampled intermediate mass), TNG galaxies exhibit $\\langle C_{IC} \\rangle$ lower by $0.35 \\text{ dex}$—a factor of $2.2$ deficit. This shortfall grows with mass: at $M_{bary}=100 \\times 10^9 \\text{ } M_{\\odot}$, the gap widens to $0.45 \\text{ dex}$ (factor of $2.8$).
+At $M_{bary}=30 \\times 10^9 \\text{ } M_{\\odot}$ (a well sampled intermediate mass), TNG galaxies exhibit $\\langle C_{IC} \\rangle$ lower by $0.35 \\text{ dex}$—a factor of $2.2$ deficit. 
+This shortfall grows with mass: at $M_{bary}=100 \\times 10^9 \\text{ } M_{\\odot}$, the gap widens to $0.45 \\text{ dex}$ (factor of $2.8$).
 
-**Interpretation:** TNG galaxies possess insufficient “information integration capacity” to achieve the extended, disk dominated equilibrium states of real galaxies. The lower $C_{IC}$ reflects shorter dynamical times $\\tau_{dyn}$ (due to higher circular velocities in concentrated halos) combined with smaller effective integration radii $r_{max}$ (where mass profiles flatten prematurely). In the language of Section 2.3, TNG systems cannot “communicate” curvature information across their full baryonic extent, remaining locked in dark matter dominated configurations despite having assembled substantial stellar disks. This directly parallels the behavior of low mass SPARC outliers, which also exhibit low $C_{IC}$ and fail to converge to $m=1.878$.
+**Interpretation:** TNG galaxies possess insufficient “information integration capacity” to achieve the extended, disk dominated equilibrium states of real galaxies. 
+The lower $C_{IC}$ reflects shorter dynamical times $\\tau_{dyn}$ (due to higher circular velocities in concentrated halos) 
+combined with smaller effective integration radii $r_{max}$ (where mass profiles flatten prematurely).
+In the language of Section 2.3, TNG systems cannot “communicate” curvature information across their full baryonic extent,
+remaining locked in dark matter dominated configurations despite having assembled substantial stellar disks. 
+This directly parallels the behavior of low mass SPARC outliers, which also exhibit low $C_{IC}$ and fail to converge to $m=1.878$.
 
 ### 4.5 Physical Interpretation: The Cusp–Core Problem Quantified
-The $m$ exponent offset provides a single parameter diagnostic for the long standing cusp–core problem: hydrodynamical simulations systematically produce galaxies that are too centrally concentrated compared to observations (de Blok 2010; Oman et al. 2015). Traditional formulations of this problem focus on inner density slopes ($\\rho(r) \\propto r^{-\\alpha}$), where pure N body simulations predict cuspy profiles ($\\alpha \\approx 1$, NFW halos) but observed rotation curves often favor shallower cores ($\\alpha < 0.5$). Our analysis extends this discrepancy to the entire mass profile: TNG galaxies are not merely cuspy in their centers— they remain dark matter dominated throughout, with insufficient baryon concentrations to alter the global potential.
+The $m$ exponent offset provides a single parameter diagnostic for the long standing cusp–core problem: 
+hydrodynamical simulations systematically produce galaxies that are too centrally concentrated compared to observations (de Blok 2010; Oman et al. 2015). 
+Traditional formulations of this problem focus on inner density slopes ($\\rho(r) \\propto r^{-\\alpha}$), 
+where pure N body simulations predict cuspy profiles ($\\alpha \\approx 1$, NFW halos) but observed rotation curves often favor shallower cores ($\\alpha < 0.5$). 
+Our analysis extends this discrepancy to the entire mass profile: TNG galaxies are not merely cuspy in their centers— they remain dark matter dominated throughout,
+with insufficient baryon concentrations to alter the global potential.
 
 Why does TNG fail to reach $m \\approx 1.88$? Several mechanisms may contribute:
-* **Insufficient feedback driven expansion:** Supernova feedback in TNG may be too weak or poorly coupled to dark matter, failing to generate the repeated expansion–contraction cycles that flatten halos in higher resolution simulations (e.g., FIRE; Hopkins et al. 2018).
-* **Excessive adiabatic contraction:** If disk formation proceeds too smoothly without major feedback events, baryonic infall can drag dark matter inward via adiabatic contraction (Blumenthal et al. 1986), steepening the halo profile rather than flattening it.
-* **Angular momentum loss:** Over efficient angular momentum transport (due to numerical viscosity or unresolved dynamical friction) could concentrate baryons into compact bulges, leaving the outer disk under populated and the halo unperturbed.
-* **Resolution effects:** Although TNG’s resolution is state of the art for cosmological volumes, the multiphase ISM and small scale turbulence driving core formation may still be under resolved. However, the complete absence of any galaxies with $m > 1.1$ suggests this is not merely a resolution issue—even well resolved massive disks fail to achieve the observed structure.
-* **Alternative dark matter physics:** If real halos are less cuspy due to self interacting dark matter (SIDM; Spergel \\& Steinhardt 2000) or warm dark matter, then cold dark matter simulations like TNG will systematically overpredict concentration regardless of baryonic physics.
+* **Insufficient feedback driven expansion:** Supernova feedback in TNG may be too weak or poorly coupled to dark matter,
+failing to generate the repeated expansion–contraction cycles that flatten halos in higher resolution simulations (e.g., FIRE; Hopkins et al. 2018).
+* **Excessive adiabatic contraction:** If disk formation proceeds too smoothly without major feedback events,
+baryonic infall can drag dark matter inward via adiabatic contraction (Blumenthal et al. 1986), steepening the halo profile rather than flattening it.
+* **Angular momentum loss:** Over efficient angular momentum transport (due to numerical viscosity or unresolved dynamical friction) could concentrate baryons into compact bulges,
+leaving the outer disk under populated and the halo unperturbed.
+* **Resolution effects:** Although TNG’s resolution is state of the art for cosmological volumes, the multiphase ISM and small scale turbulence driving core formation may still be under resolved. However, 
+the complete absence of any galaxies with $m > 1.1$ suggests this is not merely a resolution issue—even well resolved massive disks fail to achieve the observed structure.
+* **Alternative dark matter physics:** If real halos are less cuspy due to self interacting dark matter (SIDM; Spergel \\& Steinhardt 2000) or warm dark matter,
+then cold dark matter simulations like TNG will systematically overpredict concentration regardless of baryonic physics.
 
-Our $C_{IC}$ framework offers a testable prediction: simulations that increase $C_{IC}$—whether through stronger feedback, modified dark matter, or improved angular momentum transport—should see their $m$ exponents rise toward 1.878. This provides a clear target for model validation.
+Our $C_{IC}$ framework offers a testable prediction: simulations that increase $C_{IC}$—whether through stronger feedback,
+modified dark matter, or improved angular momentum transport—should see their $m$ exponents rise toward 1.878. This provides a clear target for model validation.
 
 ### 4.6 Implications for Simulation Validation
 The $m$ exponent and $C_{IC}$ metrics provide observational benchmarks for future simulation development:
@@ -203,50 +299,105 @@ The $m$ exponent and $C_{IC}$ metrics provide observational benchmarks for futur
 * Does including SIDM flatten halos and raise $m$? (Rocha et al. 2013 found modest effects)
 * Do higher resolution runs converge to $m \\approx 1.88$, or does the offset persist?
 
-Beyond TNG: Other simulation suites should be tested—EAGLE (Schaye et al. 2015), FIRE (Hopkins et al. 2018), Auriga (Grand et al. 2017)—to determine whether the $m$ offset is universal or implementation dependent. If all $\\Lambda$CDM simulations fail to reach $m \\approx 1.88$, this would constitute strong evidence for missing physics (either baryonic or dark sector).
+Beyond TNG: Other simulation suites should be tested—EAGLE (Schaye et al. 2015), FIRE (Hopkins et al. 2018), 
+Auriga (Grand et al. 2017)—to determine whether the $m$ offset is universal or implementation dependent. If all $\\Lambda$CDM simulations fail to reach $m \\approx 1.88$, 
+this would constitute strong evidence for missing physics (either baryonic or dark sector).
 
 ## 5. Discussion
 ### 5.1 The Physical Origin of the Mass Threshold
-The emergence of a critical baryonic mass threshold at $M_{crit} \\approx 5 \\times 10^9 \\text{ } M_{\\odot}$ represents a fundamental structural transition in galaxy formation. Below this scale, systems show wide variation in the mass–radius exponent ($m=1.67-1.85$) and tend to have extended, feedback dominated halos. Above it, galaxies converge to a near universal structure with $m=1.878 \\pm 0.034$, indicating a stable composite disk + halo configuration. Several physical processes likely contribute to this sharp transition.
+The emergence of a critical baryonic mass threshold at $M_{crit} \\approx 5 \\times 10^9 \\text{ } M_{\\odot}$ represents a fundamental structural transition in galaxy formation. Below this scale,
+systems show wide variation in the mass–radius exponent ($m=1.67-1.85$) and tend to have extended, 
+feedback dominated halos. Above it, galaxies converge to a near universal structure with $m=1.878 \\pm 0.034$, 
+indicating a stable composite disk + halo configuration. Several physical processes likely contribute to this sharp transition.
 
-First, the threshold coincides with the scale where gravitational binding energy overtakes stellar feedback energy. For galaxies with $M_{bary} \\lesssim 5 \\times 10^9 \\text{ } M_{\\odot}$, typical virial velocities ($V_{vir} \\lesssim 50 \\text{ km/s}$) are low enough that supernova feedback can expel large fractions of gas, delaying or preventing the formation of stable, rotationally supported disks (Governato et al. 2010). Above this mass, virial velocities rise to $50-70 \\text{ km/s}$, and feedback becomes subdominant to the gravitational potential. Gas is retained more efficiently, cooling becomes more effective, and baryons are able to dominate the inner potential and reshape the halo.
+First, the threshold coincides with the scale where gravitational binding energy overtakes stellar feedback energy.
+For galaxies with $M_{bary} \\lesssim 5 \\times 10^9 \\text{ } M_{\\odot}$, typical virial velocities ($V_{vir} \\lesssim 50 \\text{ km/s}$) are low enough that supernova feedback can expel large fractions of gas,
+delaying or preventing the formation of stable, rotationally supported disks (Governato et al. 2010). Above this mass, 
+virial velocities rise to $50-70 \\text{ km/s}$, and feedback becomes subdominant to the gravitational potential. Gas is retained more efficiently, cooling becomes more effective,
+and baryons are able to dominate the inner potential and reshape the halo.
 
-Second, this mass scale aligns with the onset of disk stability and secular evolution. Systems above the threshold typically reach Toomre $Q \\sim 1-2$, enabling the growth of stable, long lived disks and bar driven angular momentum transport. This transition likely accelerates baryon driven halo contraction, steepening the inner density profile and pushing the global $m$ exponent towards the observed universal value.
+Second, this mass scale aligns with the onset of disk stability and secular evolution. 
+Systems above the threshold typically reach Toomre $Q \\sim 1-2$, enabling the growth of stable, 
+long lived disks and bar driven angular momentum transport. This transition likely accelerates baryon driven halo contraction, 
+steepening the inner density profile and pushing the global $m$ exponent towards the observed universal value.
 
-Third, the threshold corresponds to a change in halo structure and concentration. Cosmological simulations predict a break in the concentration–mass relation near $M_{halo} \\sim 10^{11} \\text{ } M_{\\odot}$, consistent with the baryonic mass scale identified here (Dutton \\& Macci\\`o 2014). Systems below this scale tend to have low concentrations and extended profiles, while those above it become more compact and baryon influenced.
+Third, the threshold corresponds to a change in halo structure and concentration. 
+Cosmological simulations predict a break in the concentration–mass relation near $M_{halo} \\sim 10^{11} \\text{ } M_{\\odot}$, 
+consistent with the baryonic mass scale identified here (Dutton \\& Macci\\`o 2014).
+Systems below this scale tend to have low concentrations and extended profiles, while those above it become more compact and baryon influenced.
 
-Together, these factors suggest that $M_{crit}$ is not merely an empirical marker but a physically meaningful scale at which the nature of galaxy evolution changes qualitatively—from feedback limited and stochastic below, to gravity dominated and self regulating above.
+Together, these factors suggest that $M_{crit}$ is not merely an empirical marker but a physically meaningful scale at which the nature of galaxy evolution changes qualitatively—from feedback limited and stochastic below,
+to gravity dominated and self regulating above.
 
 ### 5.2 Curvature Integration Capacity as a Structural Diagnostic
 The curvature integration capacity $C_{IC}$ introduced in this work provides a useful physical interpretation of this transition. Defined as
 $$C_{IC}=M_{bary} \\times r_{max} \\times \\tau_{dyn}$$
-it captures a system’s ability to integrate gravitational information across its full spatial and temporal extent. Each term in $C_{IC}$ reflects a fundamental aspect of this capacity: mass determines the strength of the gravitational field, $r_{max}$ sets the spatial scale over which information must propagate, and $\\tau_{dyn}$ characterises the timescale on which that interaction occurs.
+it captures a system’s ability to integrate gravitational information across its full spatial and temporal extent. 
+Each term in $C_{IC}$ reflects a fundamental aspect of this capacity:
+mass determines the strength of the gravitational field, $r_{max}$ sets the spatial scale over which information must propagate, and $\\tau_{dyn}$ characterises the timescale on which that interaction occurs.
 
-Systems with high $C_{IC}$ are able to “communicate” curvature information effectively across their structure. This does not imply consciousness or agency but rather reflects a physical property: the capacity to respond coherently to the surrounding gravitational field. When $C_{IC}$ exceeds a certain threshold, the system can equilibrate globally, erasing memory of stochastic early conditions and converging to a universal structural state. Below this threshold, interactions are too weak or too slow to drive complete equilibration, and the resulting diversity of profiles is a natural consequence.
+Systems with high $C_{IC}$ are able to “communicate” curvature information effectively across their structure. 
+This does not imply consciousness or agency but rather reflects a physical property: the capacity to respond coherently to the surrounding gravitational field.
+When $C_{IC}$ exceeds a certain threshold, the system can equilibrate globally, erasing memory of stochastic early conditions and converging to a universal structural state.
+Below this threshold, interactions are too weak or too slow to drive complete equilibration, and the resulting diversity of profiles is a natural consequence.
 
-Crucially, $C_{IC}$ is not a speculative quantity. It depends only on directly measurable physical parameters—baryonic mass, radial extent, and orbital velocity—and can therefore be computed for observed galaxies, simulated systems, and even non galactic structures. This makes it a promising diagnostic for comparing theoretical models with observations in a model independent way.
+Crucially, $C_{IC}$ is not a speculative quantity. It depends only on directly measurable physical parameters—baryonic mass, 
+radial extent, and orbital velocity—and can therefore be computed for observed galaxies, simulated systems, and even non galactic structures. 
+This makes it a promising diagnostic for comparing theoretical models with observations in a model independent way.
 
 ### 5.3 Implications for Galaxy Formation
 The existence of a sharp structural transition at $M_{crit}$ and the predictive power of the $C_{IC}$ metric have several implications for our understanding of galaxy formation and evolution.
 
-* **Below the threshold**, galaxies evolve in a feedback dominated regime. Gas is expelled episodically, star formation is bursty, and dark matter halos remain extended and weakly bound. Structural diversity is expected, and the $m$ exponent exhibits significant scatter. Systems in this regime often show low $C_{IC}$ values, reflecting their limited ability to equilibrate.
-* **Above the threshold**, gravity dominates over feedback, enabling efficient gas retention, stable disk formation, and significant baryonic influence on the halo potential. Structural convergence is rapid, and the $m$ exponent stabilises near 1.878. The reduced scatter reflects the fact that diverse formation histories lead to similar equilibrium outcomes once $C_{IC}$ exceeds the critical value.
+* **Below the threshold**, galaxies evolve in a feedback dominated regime. Gas is expelled episodically, star formation is bursty, 
+and dark matter halos remain extended and weakly bound. Structural diversity is expected, and the $m$ exponent exhibits significant scatter. 
+Systems in this regime often show low $C_{IC}$ values, reflecting their limited ability to equilibrate.
+* **Above the threshold**, gravity dominates over feedback, enabling efficient gas retention, stable disk formation,
+and significant baryonic influence on the halo potential.
+Structural convergence is rapid, and the $m$ exponent stabilises near 1.878. 
+The reduced scatter reflects the fact that diverse formation histories lead to similar equilibrium outcomes once $C_{IC}$ exceeds the critical value.
 
-This framework also suggests clear evolutionary predictions. At high redshift, when typical galaxy masses were lower and assembly incomplete, a larger fraction of systems should fall below the threshold. As a result, we predict that the scatter in $m$ at fixed mass should increase with redshift, and the proportion of galaxies exhibiting $m \\approx 1.878$ should decrease. Future deep H I and optical rotation curve surveys will be able to test this directly.
+This framework also suggests clear evolutionary predictions. At high redshift, when typical galaxy masses were lower and assembly incomplete,
+a larger fraction of systems should fall below the threshold. As a result, we predict that the scatter in $m$ at fixed mass should increase with redshift,
+and the proportion of galaxies exhibiting $m \\approx 1.878$ should decrease. Future deep H I and optical rotation curve surveys will be able to test this directly.
 
 ### 5.4 Implications for Simulations
-The comparison with IllustrisTNG underscores a persistent structural tension between simulated and observed galaxies. Simulated systems exhibit $m=0.895 \\pm 0.106$, roughly a factor of two more concentrated than the observed $m=1.878 \\pm 0.084$. This discrepancy is a quantitative expression of the cusp–core problem and highlights the difficulty current feedback prescriptions face in transforming initially cuspy halos into extended, baryon influenced structures.
-Framing the problem in terms of $C_{IC}$ offers a new perspective. TNG galaxies have systematically lower $C_{IC}$ values than real galaxies at the same mass, indicating insufficient capacity to integrate curvature information across their structure. This may reflect inadequate feedback energy coupling, overly rapid baryonic infall and adiabatic contraction, or missing physics such as self interacting or warm dark matter. Whatever the cause, matching the observed $C_{IC}$ distribution—rather than only global scaling relations—offers a powerful new target for future simulations.
+The comparison with IllustrisTNG underscores a persistent structural tension between simulated and observed galaxies.
+Simulated systems exhibit $m=0.895 \\pm 0.106$, roughly a factor of two more concentrated than the observed $m=1.878 \\pm 0.084$. 
+This discrepancy is a quantitative expression of the cusp–core problem and highlights the difficulty current feedback prescriptions face in transforming initially cuspy halos into extended, 
+baryon influenced structures.
+Framing the problem in terms of $C_{IC}$ offers a new perspective.
+TNG galaxies have systematically lower $C_{IC}$ values than real galaxies at the same mass,
+indicating insufficient capacity to integrate curvature information across their structure. 
+This may reflect inadequate feedback energy coupling, overly rapid baryonic infall and adiabatic contraction,
+or missing physics such as self interacting or warm dark matter.
+Whatever the cause, matching the observed $C_{IC}$ distribution—rather than only global scaling relations—offers a powerful new target for future simulations.
 
 ### 5.5 A Unified Perspective
-The emergence of a universal mass–radius scaling above a critical threshold, and the success of $C_{IC}$ in predicting structural convergence, suggest a broader principle: structure formation is fundamentally constrained by a system’s capacity to interact with its environment over its spatial and temporal extent. Whether in galaxies, planetary systems, or more complex physical systems, the same principle may govern when and how equilibrium emerges. By reframing traditional galaxy structure problems in terms of measurable interaction capacity rather than unobserved components, we gain both a clearer physical understanding and a new way to test theoretical models against reality.
+The emergence of a universal mass–radius scaling above a critical threshold, and the success of $C_{IC}$ in predicting structural convergence, 
+suggest a broader principle: structure formation is fundamentally constrained by a system’s capacity to interact with its environment over its spatial and temporal extent.
+Whether in galaxies, planetary systems, or more complex physical systems, the same principle may govern when and how equilibrium emerges. 
+By reframing traditional galaxy structure problems in terms of measurable interaction capacity rather than unobserved components,
+we gain both a clearer physical understanding and a new way to test theoretical models against reality.
 
 ## 6. Conclusions
-We have investigated the mass–radius structure of 91 late type galaxies spanning over two orders of magnitude in baryonic mass, focusing on the power law exponent $m$ in the relation $M(r) \\propto r^m$. Our main findings are as follows:
-* A critical baryonic mass threshold exists at $M_{crit} \\approx 5 \\times 10^9 \\text{ } M_{\\odot}$, marking a sharp transition in structural behaviour. Below this mass, galaxies exhibit diverse and extended profiles ($m=1.67-1.85$) consistent with incomplete virilization and strong feedback regulation. Above this threshold, the scatter collapses and systems converge tightly to a universal value of $m=1.878 \\pm 0.034$.
-* The threshold corresponds to a physical transition where gravitational binding energy exceeds stellar feedback energy, enabling efficient gas retention, disk formation, and baryon driven contraction of the dark matter halo. It also aligns with changes in halo concentration, disk stability, and the onset of self regulated secular evolution.
-* We introduce the curvature integration capacity, $C_{IC}$, as a **dimensional physical order parameter** that measures a system’s capacity to integrate gravitational information across its spatial and temporal extent. $C_{IC}$ correlates strongly with structural state: low $C_{IC}$ systems remain feedback dominated and structurally diverse, while high $C_{IC}$ systems achieve global equilibrium and converge to the universal scaling.
-* Comparison with IllustrisTNG simulations reveals a systematic structural mismatch. Simulated galaxies exhibit $m=0.895 \\pm 0.106$, a factor of two more concentrated than observed galaxies. This quantifies the cusp–core tension in a single parameter and suggests that current feedback models or dark matter assumptions may be insufficient to reproduce observed structures.
-* Curvature integration capacity provides a new target for theory and simulation. Matching observed $m$ and $C_{IC}$ distributions offers a stringent test of galaxy formation models and may guide future improvements in feedback prescriptions, angular momentum transport and alternative dark matter scenarios.
+We have investigated the mass–radius structure of 91 late type galaxies spanning over two orders of magnitude in baryonic mass, 
+focusing on the power law exponent $m$ in the relation $M(r) \\propto r^m$. Our main findings are as follows:
+* A critical baryonic mass threshold exists at $M_{crit} \\approx 5 \\times 10^9 \\text{ } M_{\\odot}$, 
+marking a sharp transition in structural behaviour. Below this mass, galaxies exhibit diverse and extended profiles ($m=1.67-1.85$) consistent with incomplete virilization and strong feedback regulation. 
+Above this threshold, the scatter collapses and systems converge tightly to a universal value of $m=1.878 \\pm 0.034$.
+* The threshold corresponds to a physical transition where gravitational binding energy exceeds stellar feedback energy, 
+enabling efficient gas retention, disk formation, and baryon driven contraction of the dark matter halo. It also aligns with changes in halo concentration,
+disk stability, and the onset of self regulated secular evolution.
+* We introduce the curvature integration capacity, $C_{IC}$, as a **dimensional physical order parameter** that measures a system’s capacity to integrate gravitational information across its spatial and temporal extent. 
+$C_{IC}$ correlates strongly with structural state: low $C_{IC}$ systems remain feedback dominated and structurally diverse, while high $C_{IC}$ systems achieve global equilibrium and converge to the universal scaling.
+* Comparison with IllustrisTNG simulations reveals a systematic structural mismatch. Simulated galaxies exhibit $m=0.895 \\pm 0.106$, 
+a factor of two more concentrated than observed galaxies. 
+This quantifies the cusp–core tension in a single parameter and suggests that current feedback models or dark matter assumptions may be insufficient to reproduce observed structures.
+* Curvature integration capacity provides a new target for theory and simulation. 
+Matching observed $m$ and $C_{IC}$ distributions offers a stringent test of galaxy formation models and may guide future improvements in feedback prescriptions, 
+angular momentum transport and alternative dark matter scenarios.
 
-This work establishes a simple but powerful framework for connecting galaxy structure, baryonic mass, and dynamical state. By identifying a clear physical threshold and introducing a measurable quantity that captures a system’s interaction capacity, we provide a new lens through which to interpret galaxy formation. Future work will extend this analysis to higher redshifts, alternative simulation suites, and non galactic systems, exploring whether the principles uncovered here represent a more general feature of self organizing structures in the universe.""")
+This work establishes a simple but powerful framework for connecting galaxy structure, baryonic mass, and dynamical state. 
+By identifying a clear physical threshold and introducing a measurable quantity that captures a system’s interaction capacity, 
+we provide a new lens through which to interpret galaxy formation. Future work will extend this analysis to higher redshifts, alternative simulation suites, 
+and non galactic systems, exploring whether the principles uncovered here represent a more general feature of self organizing structures in the universe.""")
