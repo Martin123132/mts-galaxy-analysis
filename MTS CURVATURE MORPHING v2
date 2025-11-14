@@ -1,0 +1,523 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.ndimage import gaussian_filter, sobel
+from astropy.io import fits
+
+# =============================================================================
+# MTS CURVATURE MORPHING v2
+# - Uses Φ proxy from |∇κ|
+# - Laplacian + MTS tension regularisation
+# - Runs on all six Frontier Field κ maps
+# =============================================================================
+
+# List of kappa map filenames to process.
+kappa_filenames = [
+    "/content/hlsp_frontier_model_abell2744_cats_v4_kappa.fits",
+    "/content/hlsp_frontier_model_abell370_cats_v4_kappa.fits",
+    "/content/hlsp_frontier_model_abells1063_cats_v4_kappa.fits",
+    "/content/hlsp_frontier_model_macs0416_cats_v4.1_kappa.fits",
+    "/content/hlsp_frontier_model_macs0717_cats_v4.1_kappa.fits",
+    "/content/hlsp_frontier_model_macs1149_cats_v4.1_kappa.fits"
+]
+
+# -----------------------------------------------------------------------------
+# Utility: RMSE loss
+# -----------------------------------------------------------------------------
+def loss_rmse(real, synth):
+    mask = ~np.isnan(real)
+    if real.shape != synth.shape:
+        return float('inf')
+    return np.sqrt(np.mean((real[mask] - synth[mask])**2))
+
+
+# -----------------------------------------------------------------------------
+# Main loop over κ maps
+# -----------------------------------------------------------------------------
+for kappa_filename in kappa_filenames:
+    print(f"\n{'='*80}")
+    print(f"Processing map: {kappa_filename}")
+    print(f"{'='*80}")
+
+    # ========================= LOAD REAL KAPPA MAP ============================
+    try:
+        with fits.open(kappa_filename) as hdul:
+            kappa_real = hdul[0].data
+        print(f"Loaded kappa map from {kappa_filename}")
+        print(f"Kappa map shape: {kappa_real.shape}")
+    except FileNotFoundError:
+        print(f"Error: Kappa map file not found at {kappa_filename}. Skipping.")
+        continue
+    except Exception as e:
+        print(f"Error loading kappa map: {e}. Skipping.")
+        continue
+
+    # Ensure array & handle NaNs
+    kappa_real = np.nan_to_num(kappa_real)
+
+    # Normalise κ to [0,1] (per-map)
+    min_kappa = np.nanmin(kappa_real)
+    max_kappa = np.nanmax(kappa_real)
+    if max_kappa - min_kappa > 1e-6:
+        kappa_norm = (kappa_real - min_kappa) / (max_kappa - min_kappa)
+    else:
+        kappa_norm = np.zeros_like(kappa_real)
+
+    print("kappa_real variable is set and normalised.")
+
+    # ====================== CALCULATE Φ PROXY MAP (MTS) =======================
+    print("\nCalculating Phi Proxy Map (|∇κ|)...")
+    dx = sobel(kappa_norm, axis=1, mode='reflect')
+    dy = sobel(kappa_norm, axis=0, mode='reflect')
+    gradient_magnitude = np.sqrt(dx**2 + dy**2)
+    phi_proxy_map = gradient_magnitude
+
+    # Normalise Φ proxy for later use
+    max_phi = np.max(phi_proxy_map)
+    if max_phi > 1e-6:
+        phi_proxy_norm = phi_proxy_map / max_phi
+    else:
+        phi_proxy_norm = np.zeros_like(phi_proxy_map)
+
+    print("Phi proxy map calculated and normalised.")
+
+    # Save Φ proxy to FITS for inspection (optional)
+    phi_out_name = kappa_filename.split("/")[-1].replace(".fits", "") + "_phi_proxy.fits"
+    fits.PrimaryHDU(phi_proxy_norm).writeto(phi_out_name, overwrite=True)
+    print(f"Saved Φ proxy map to {phi_out_name}")
+
+    # =================== MORPHING OPTIMISATION (MTS v2) =======================
+
+    # Hyperparameters (your tuned values)
+    iterations = 1500
+    initial_lr = 0.0050
+    decay = 0.9997
+    momentum = 0.9500
+    smooth_sigma = 1.5
+    reg_strength_laplacian = 0.0500
+    reg_strength_mst = 0.0500
+
+    # Initial field & velocity
+    np.random.seed(42)  # repeatability; remove if you want variety per run
+    ny, nx = kappa_norm.shape
+    field = np.random.rand(ny, nx)
+    velocity = np.zeros_like(field)
+
+    rmse_history = []
+    best_rmse = float('inf')
+    best_field_at_min_rmse = None
+    lr = initial_lr
+
+    print(f"\nStarting MTS morphing optimisation ({iterations} iterations)...")
+    print(f"  Parameters: LR={initial_lr:.4f}, Decay={decay:.4f}, "
+          f"Mom={momentum:.4f}, RegLap={reg_strength_laplacian:.4f}, "
+          f"RegMST={reg_strength_mst:.4f}")
+    print("-" * 80)
+
+    for step in range(iterations):
+        # Smooth field to enforce local coherence
+        field_smooth = gaussian_filter(field, sigma=smooth_sigma)
+
+        # Normalise synthetic field to [0,1]
+        fmin = np.min(field_smooth)
+        fmax = np.max(field_smooth)
+        if fmax - fmin > 1e-6:
+            synthetic_kappa = (field_smooth - fmin) / (fmax - fmin)
+        else:
+            synthetic_kappa = np.full_like(field_smooth, 0.5 * (fmin + fmax))
+
+        # Data RMSE vs real κ
+        current_rmse = loss_rmse(kappa_norm, synthetic_kappa)
+        rmse_history.append(current_rmse)
+
+        # Track best state
+        if current_rmse < best_rmse:
+            best_rmse = current_rmse
+            best_field_at_min_rmse = np.copy(field)
+
+        # ---------------- GRADIENTS ----------------
+
+        # Data term: derivative of RMSE wrt synthetic κ
+        gradient_loss_data = 2 * (synthetic_kappa - kappa_norm)
+
+        # MTS regularisation: push synthetic κ toward Φ-driven curvature pattern
+        if phi_proxy_norm.shape == synthetic_kappa.shape:
+            # This is your MST-like tension term
+            gradient_reg_mst = reg_strength_mst * (-2 * (1 - synthetic_kappa) * phi_proxy_norm**2)
+        else:
+            gradient_reg_mst = np.zeros_like(synthetic_kappa)
+
+        # Laplacian regularisation on the underlying field
+        laplacian = (
+            -4 * field
+            + np.roll(field, 1, axis=0) + np.roll(field, -1, axis=0)
+            + np.roll(field, 1, axis=1) + np.roll(field, -1, axis=1)
+        )
+        gradient_reg_laplacian = reg_strength_laplacian * laplacian
+
+        # Chain rule: backprop from smoothed κ to raw field (approx)
+        denom = (fmax - fmin) if (fmax - fmin) > 1e-6 else 1.0
+        grad_data_wrt_field = gradient_loss_data / denom
+        grad_mst_wrt_field = gradient_reg_mst / denom
+
+        grad_combined_kappa = grad_data_wrt_field + grad_mst_wrt_field
+        grad_back_to_field = gaussian_filter(grad_combined_kappa, sigma=smooth_sigma)
+
+        # Total gradient on field
+        total_gradient = grad_back_to_field + gradient_reg_laplacian
+
+        # Momentum update
+        velocity = momentum * velocity - lr * total_gradient
+        field += velocity
+
+        # Keep within [0,1]
+        field = np.clip(field, 0, 1)
+
+        # Learning rate decay
+        lr *= decay
+
+        # Progress logging
+        if (step + 1) % 100 == 0 or step == 0:
+            print(f"  Step {step+1}/{iterations}: Current RMSE = {current_rmse:.5f}")
+
+    print("\nOptimisation finished for this map.")
+    print("============================================================")
+    print(f"Final Best RMSE achieved: {best_rmse:.5f}")
+    print("============================================================")
+
+    # Use the best field for outputs
+    if best_field_at_min_rmse is None:
+        best_field_at_min_rmse = np.copy(field)
+
+    best_field = np.copy(field)
+
+    # ======================== SAVE FITS OUTPUTS ==============================
+
+    base_name = kappa_filename.split("/")[-1].replace(".fits", "")
+
+    # Final field (end of training)
+    output_filename_final = f"{base_name}_optimized_kappa_final.fits"
+    fits.PrimaryHDU(best_field).writeto(output_filename_final, overwrite=True)
+    print(f"Saved final optimized kappa map to {output_filename_final}")
+
+    # Field at minimum RMSE
+    output_filename_min = f"{base_name}_optimized_kappa_min_rmse.fits"
+    fits.PrimaryHDU(best_field_at_min_rmse).writeto(output_filename_min, overwrite=True)
+    print(f"Saved kappa map at minimum RMSE to {output_filename_min}")
+
+    # ============================= VISUALISATION =============================
+
+    # Re-scale best_field into the original κ range for nicer comparison
+    bf_min = np.min(best_field)
+    bf_max = np.max(best_field)
+    if bf_max - bf_min > 1e-6:
+        synthetic_kappa_final_viz = min_kappa + (best_field - bf_min) * (max_kappa - min_kappa) / (bf_max - bf_min)
+    else:
+        synthetic_kappa_final_viz = np.full_like(best_field, np.nanmean(kappa_real))
+
+    # Real vs synthetic vs residuals
+    plt.figure(figsize=(16, 6))
+
+    plt.subplot(1, 3, 1)
+    plt.imshow(kappa_real, cmap='viridis', origin='lower')
+    plt.title(f"Real κ Map\n{base_name}")
+    plt.colorbar(label="κ")
+    plt.axis('off')
+
+    plt.subplot(1, 3, 2)
+    plt.imshow(synthetic_kappa_final_viz, cmap='viridis', origin='lower')
+    plt.title("Morph-Evolved Field (Final State)")
+    plt.colorbar(label="κ_synth")
+    plt.axis('off')
+
+    plt.subplot(1, 3, 3)
+    mask = ~np.isnan(kappa_real)
+    residuals_final = np.full_like(kappa_real, np.nan)
+    residuals_final[mask] = kappa_real[mask] - synthetic_kappa_final_viz[mask]
+    plt.imshow(residuals_final, cmap='seismic', origin='lower', vmin=-0.3, vmax=0.3)
+    plt.title("Residuals (Real - Final Synthetic)")
+    plt.colorbar(label="Δκ")
+    plt.axis('off')
+
+    plt.tight_layout()
+    plt.suptitle(f"MTS Morphing Results for {base_name}", y=1.02)
+    plt.show()
+
+    # RMSE history
+    plt.figure()
+    plt.plot(rmse_history, label="RMSE Loss")
+    plt.title(f"RMSE Evolution During Optimisation\n{base_name}")
+    plt.xlabel("Iteration")
+    plt.ylabel("RMSE")
+    plt.grid(True, alpha=0.3)
+    plt.legend()
+    plt.show()
+
+    print(f"\nFinished processing map: {kappa_filename}")
+    print(f"{'='*80}\n")
+
+print("All specified kappa maps have been processed with MTS morphing v2.")
+
+================================================================================
+Processing map: /content/hlsp_frontier_model_abell2744_cats_v4_kappa.fits
+================================================================================
+Loaded kappa map from /content/hlsp_frontier_model_abell2744_cats_v4_kappa.fits
+Kappa map shape: (2000, 2000)
+kappa_real variable is set and normalised.
+
+Calculating Phi Proxy Map (|∇κ|)...
+Phi proxy map calculated and normalised.
+Saved Φ proxy map to hlsp_frontier_model_abell2744_cats_v4_kappa_phi_proxy.fits
+
+Starting MTS morphing optimisation (1500 iterations)...
+  Parameters: LR=0.0050, Decay=0.9997, Mom=0.9500, RegLap=0.0500, RegMST=0.0500
+--------------------------------------------------------------------------------
+  Step 1/1500: Current RMSE = 0.50983
+  Step 100/1500: Current RMSE = 0.00381
+  Step 200/1500: Current RMSE = 0.00287
+  Step 300/1500: Current RMSE = 0.00275
+  Step 400/1500: Current RMSE = 0.00345
+  Step 500/1500: Current RMSE = 0.00335
+  Step 600/1500: Current RMSE = 0.00333
+  Step 700/1500: Current RMSE = 0.02946
+  Step 800/1500: Current RMSE = 0.00344
+  Step 900/1500: Current RMSE = 0.00300
+  Step 1000/1500: Current RMSE = 0.00766
+  Step 1100/1500: Current RMSE = 0.00323
+  Step 1200/1500: Current RMSE = 0.01112
+  Step 1300/1500: Current RMSE = 0.00495
+  Step 1400/1500: Current RMSE = 0.00341
+  Step 1500/1500: Current RMSE = 0.01609
+
+Optimisation finished for this map.
+============================================================
+Final Best RMSE achieved: 0.00180
+============================================================
+Saved final optimized kappa map to hlsp_frontier_model_abell2744_cats_v4_kappa_optimized_kappa_final.fits
+Saved kappa map at minimum RMSE to hlsp_frontier_model_abell2744_cats_v4_kappa_optimized_kappa_min_rmse.fits
+
+
+
+Finished processing map: /content/hlsp_frontier_model_abell2744_cats_v4_kappa.fits
+================================================================================
+
+
+================================================================================
+Processing map: /content/hlsp_frontier_model_abell370_cats_v4_kappa.fits
+================================================================================
+Loaded kappa map from /content/hlsp_frontier_model_abell370_cats_v4_kappa.fits
+Kappa map shape: (3000, 3000)
+kappa_real variable is set and normalised.
+
+Calculating Phi Proxy Map (|∇κ|)...
+Phi proxy map calculated and normalised.
+Saved Φ proxy map to hlsp_frontier_model_abell370_cats_v4_kappa_phi_proxy.fits
+
+Starting MTS morphing optimisation (1500 iterations)...
+  Parameters: LR=0.0050, Decay=0.9997, Mom=0.9500, RegLap=0.0500, RegMST=0.0500
+--------------------------------------------------------------------------------
+  Step 1/1500: Current RMSE = 0.50727
+  Step 100/1500: Current RMSE = 0.05436
+  Step 200/1500: Current RMSE = 0.00707
+  Step 300/1500: Current RMSE = 0.00456
+  Step 400/1500: Current RMSE = 0.00665
+  Step 500/1500: Current RMSE = 0.00963
+  Step 600/1500: Current RMSE = 0.02028
+  Step 700/1500: Current RMSE = 0.00437
+  Step 800/1500: Current RMSE = 0.01205
+  Step 900/1500: Current RMSE = 0.01259
+  Step 1000/1500: Current RMSE = 0.01940
+  Step 1100/1500: Current RMSE = 0.00408
+  Step 1200/1500: Current RMSE = 0.00577
+  Step 1300/1500: Current RMSE = 0.00376
+  Step 1400/1500: Current RMSE = 0.01117
+  Step 1500/1500: Current RMSE = 0.01089
+
+Optimisation finished for this map.
+============================================================
+Final Best RMSE achieved: 0.00320
+============================================================
+Saved final optimized kappa map to hlsp_frontier_model_abell370_cats_v4_kappa_optimized_kappa_final.fits
+Saved kappa map at minimum RMSE to hlsp_frontier_model_abell370_cats_v4_kappa_optimized_kappa_min_rmse.fits
+
+
+
+Finished processing map: /content/hlsp_frontier_model_abell370_cats_v4_kappa.fits
+================================================================================
+
+
+================================================================================
+Processing map: /content/hlsp_frontier_model_abells1063_cats_v4_kappa.fits
+================================================================================
+Loaded kappa map from /content/hlsp_frontier_model_abells1063_cats_v4_kappa.fits
+Kappa map shape: (1500, 1500)
+kappa_real variable is set and normalised.
+
+Calculating Phi Proxy Map (|∇κ|)...
+Phi proxy map calculated and normalised.
+Saved Φ proxy map to hlsp_frontier_model_abells1063_cats_v4_kappa_phi_proxy.fits
+
+Starting MTS morphing optimisation (1500 iterations)...
+  Parameters: LR=0.0050, Decay=0.9997, Mom=0.9500, RegLap=0.0500, RegMST=0.0500
+--------------------------------------------------------------------------------
+  Step 1/1500: Current RMSE = 0.48411
+  Step 100/1500: Current RMSE = 0.01905
+  Step 200/1500: Current RMSE = 0.03275
+  Step 300/1500: Current RMSE = 0.02345
+  Step 400/1500: Current RMSE = 0.03601
+  Step 500/1500: Current RMSE = 0.02593
+  Step 600/1500: Current RMSE = 0.03042
+  Step 700/1500: Current RMSE = 0.02230
+  Step 800/1500: Current RMSE = 0.02204
+  Step 900/1500: Current RMSE = 0.02584
+  Step 1000/1500: Current RMSE = 0.02529
+  Step 1100/1500: Current RMSE = 0.02154
+  Step 1200/1500: Current RMSE = 0.01054
+  Step 1300/1500: Current RMSE = 0.02141
+  Step 1400/1500: Current RMSE = 0.01145
+  Step 1500/1500: Current RMSE = 0.02730
+
+Optimisation finished for this map.
+============================================================
+Final Best RMSE achieved: 0.00798
+============================================================
+Saved final optimized kappa map to hlsp_frontier_model_abells1063_cats_v4_kappa_optimized_kappa_final.fits
+Saved kappa map at minimum RMSE to hlsp_frontier_model_abells1063_cats_v4_kappa_optimized_kappa_min_rmse.fits
+
+
+
+Finished processing map: /content/hlsp_frontier_model_abells1063_cats_v4_kappa.fits
+================================================================================
+
+
+================================================================================
+Processing map: /content/hlsp_frontier_model_macs0416_cats_v4.1_kappa.fits
+================================================================================
+Loaded kappa map from /content/hlsp_frontier_model_macs0416_cats_v4.1_kappa.fits
+Kappa map shape: (1000, 1000)
+kappa_real variable is set and normalised.
+
+Calculating Phi Proxy Map (|∇κ|)...
+Phi proxy map calculated and normalised.
+Saved Φ proxy map to hlsp_frontier_model_macs0416_cats_v4.1_kappa_phi_proxy.fits
+
+Starting MTS morphing optimisation (1500 iterations)...
+  Parameters: LR=0.0050, Decay=0.9997, Mom=0.9500, RegLap=0.0500, RegMST=0.0500
+--------------------------------------------------------------------------------
+  Step 1/1500: Current RMSE = 0.52454
+  Step 100/1500: Current RMSE = 0.01250
+  Step 200/1500: Current RMSE = 0.01895
+  Step 300/1500: Current RMSE = 0.02340
+  Step 400/1500: Current RMSE = 0.02298
+  Step 500/1500: Current RMSE = 0.01929
+  Step 600/1500: Current RMSE = 0.01961
+  Step 700/1500: Current RMSE = 0.02002
+  Step 800/1500: Current RMSE = 0.03851
+  Step 900/1500: Current RMSE = 0.02913
+  Step 1000/1500: Current RMSE = 0.02633
+  Step 1100/1500: Current RMSE = 0.03268
+  Step 1200/1500: Current RMSE = 0.02350
+  Step 1300/1500: Current RMSE = 0.02921
+  Step 1400/1500: Current RMSE = 0.00876
+  Step 1500/1500: Current RMSE = 0.02292
+
+Optimisation finished for this map.
+============================================================
+Final Best RMSE achieved: 0.00729
+============================================================
+Saved final optimized kappa map to hlsp_frontier_model_macs0416_cats_v4.1_kappa_optimized_kappa_final.fits
+Saved kappa map at minimum RMSE to hlsp_frontier_model_macs0416_cats_v4.1_kappa_optimized_kappa_min_rmse.fits
+
+
+
+Finished processing map: /content/hlsp_frontier_model_macs0416_cats_v4.1_kappa.fits
+================================================================================
+
+
+================================================================================
+Processing map: /content/hlsp_frontier_model_macs0717_cats_v4.1_kappa.fits
+================================================================================
+Loaded kappa map from /content/hlsp_frontier_model_macs0717_cats_v4.1_kappa.fits
+Kappa map shape: (1000, 1000)
+kappa_real variable is set and normalised.
+
+Calculating Phi Proxy Map (|∇κ|)...
+Phi proxy map calculated and normalised.
+Saved Φ proxy map to hlsp_frontier_model_macs0717_cats_v4.1_kappa_phi_proxy.fits
+
+Starting MTS morphing optimisation (1500 iterations)...
+  Parameters: LR=0.0050, Decay=0.9997, Mom=0.9500, RegLap=0.0500, RegMST=0.0500
+--------------------------------------------------------------------------------
+  Step 1/1500: Current RMSE = 0.52197
+  Step 100/1500: Current RMSE = 0.01943
+  Step 200/1500: Current RMSE = 0.02298
+  Step 300/1500: Current RMSE = 0.02519
+  Step 400/1500: Current RMSE = 0.01846
+  Step 500/1500: Current RMSE = 0.02253
+  Step 600/1500: Current RMSE = 0.01977
+  Step 700/1500: Current RMSE = 0.01683
+  Step 800/1500: Current RMSE = 0.01983
+  Step 900/1500: Current RMSE = 0.02681
+  Step 1000/1500: Current RMSE = 0.01630
+  Step 1100/1500: Current RMSE = 0.01963
+  Step 1200/1500: Current RMSE = 0.03287
+  Step 1300/1500: Current RMSE = 0.01642
+  Step 1400/1500: Current RMSE = 0.02178
+  Step 1500/1500: Current RMSE = 0.02130
+
+Optimisation finished for this map.
+============================================================
+Final Best RMSE achieved: 0.00949
+============================================================
+Saved final optimized kappa map to hlsp_frontier_model_macs0717_cats_v4.1_kappa_optimized_kappa_final.fits
+Saved kappa map at minimum RMSE to hlsp_frontier_model_macs0717_cats_v4.1_kappa_optimized_kappa_min_rmse.fits
+
+
+
+Finished processing map: /content/hlsp_frontier_model_macs0717_cats_v4.1_kappa.fits
+================================================================================
+
+
+================================================================================
+Processing map: /content/hlsp_frontier_model_macs1149_cats_v4.1_kappa.fits
+================================================================================
+Loaded kappa map from /content/hlsp_frontier_model_macs1149_cats_v4.1_kappa.fits
+Kappa map shape: (1000, 1000)
+kappa_real variable is set and normalised.
+
+Calculating Phi Proxy Map (|∇κ|)...
+Phi proxy map calculated and normalised.
+Saved Φ proxy map to hlsp_frontier_model_macs1149_cats_v4.1_kappa_phi_proxy.fits
+
+Starting MTS morphing optimisation (1500 iterations)...
+  Parameters: LR=0.0050, Decay=0.9997, Mom=0.9500, RegLap=0.0500, RegMST=0.0500
+--------------------------------------------------------------------------------
+  Step 1/1500: Current RMSE = 0.51576
+  Step 100/1500: Current RMSE = 0.03735
+  Step 200/1500: Current RMSE = 0.03680
+  Step 300/1500: Current RMSE = 0.05473
+  Step 400/1500: Current RMSE = 0.05994
+  Step 500/1500: Current RMSE = 0.02746
+  Step 600/1500: Current RMSE = 0.04249
+  Step 700/1500: Current RMSE = 0.02376
+  Step 800/1500: Current RMSE = 0.04671
+  Step 900/1500: Current RMSE = 0.02262
+  Step 1000/1500: Current RMSE = 0.04722
+  Step 1100/1500: Current RMSE = 0.04919
+  Step 1200/1500: Current RMSE = 0.03737
+  Step 1300/1500: Current RMSE = 0.03389
+  Step 1400/1500: Current RMSE = 0.04748
+  Step 1500/1500: Current RMSE = 0.02228
+
+Optimisation finished for this map.
+============================================================
+Final Best RMSE achieved: 0.01509
+============================================================
+Saved final optimized kappa map to hlsp_frontier_model_macs1149_cats_v4.1_kappa_optimized_kappa_final.fits
+Saved kappa map at minimum RMSE to hlsp_frontier_model_macs1149_cats_v4.1_kappa_optimized_kappa_min_rmse.fits
+
+
+
+Finished processing map: /content/hlsp_frontier_model_macs1149_cats_v4.1_kappa.fits
+================================================================================
+
+All specified kappa maps have been processed with MTS morphing v2.
