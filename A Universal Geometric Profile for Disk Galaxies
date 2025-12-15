@@ -1,0 +1,215 @@
+=====================================================================
+A Universal Geometric Profile for Disk Galaxies
+within the Motion–TimeSpace (MTS) Framework
+=====================================================================
+
+Author:
+Martin Ollett  
+Independent Researcher  
+2025
+
+---------------------------------------------------------------------
+Abstract
+---------------------------------------------------------------------
+
+We present a compact geometric framework for describing the large-scale
+structure and kinematics of rotationally supported disk galaxies within
+the Motion–TimeSpace (MTS) approach. Using empirical scaling relations
+previously identified in high-quality rotation-curve data, we show that
+the total baryonic mass of a galaxy acts as a primary control parameter
+for its characteristic radii and asymptotic rotation speed.
+
+We derive a minimal set of power-law relations linking baryonic mass to
+star-formation extent, disk size, and velocity saturation, and test
+these relations against several landmark galaxies (M33, the Milky Way,
+and M31). Deviations from the geometric predictions are shown to correlate
+systematically with known structural features such as bars, bulges, and
+diffuse low-surface-brightness disks.
+
+The results suggest that while local baryonic rearrangements introduce
+order-10% scatter, the global structure of equilibrium disk galaxies is
+well described by a small number of geometric scaling laws.
+
+---------------------------------------------------------------------
+1. Introduction
+---------------------------------------------------------------------
+
+Disk galaxies exhibit remarkably regular scaling relations linking mass,
+size, and rotation velocity, despite substantial diversity in morphology,
+environment, and star-formation history. Traditional interpretations
+often attribute this regularity to halo structure and baryon–halo
+coupling, while treating deviations as system-specific complexity.
+
+The Motion–TimeSpace (MTS) framework approaches this problem from a
+geometric perspective, treating galactic structure as the outcome of
+curvature-diffusion dynamics that reach equilibrium above a characteristic
+baryonic mass threshold. In this regime, galaxies converge toward a
+universal mass–radius exponent with limited scatter.
+
+This paper consolidates these results into a single “universal profile”
+and evaluates its performance against well-studied nearby galaxies.
+
+---------------------------------------------------------------------
+2. The MTS Universal Profile
+---------------------------------------------------------------------
+
+We consider galaxies whose total baryonic mass M_b exceeds the threshold
+for approximate virial equilibrium (M_b ≳ 5 × 10⁹ M☉). In this regime,
+the enclosed mass profile is empirically well approximated by:
+
+    M(r) ∝ r^m ,   with   m = 1.878 ± 0.064
+
+This exponent defines the geometric backbone of the MTS disk profile.
+
+---------------------------------------------------------------------
+2.1 Characteristic Radii
+---------------------------------------------------------------------
+
+Expressing baryonic mass in units of 10⁹ M☉, we define:
+
+Star-formation radius:
+    R₉₀ = 2.40 · M_b^0.323   kpc
+
+Observed disk edge:
+    R_last = 3.10 · M_b^0.369   kpc
+
+These relations reflect observational definitions rather than pure
+dynamical radii and therefore differ slightly from the inverse of m.
+
+---------------------------------------------------------------------
+2.2 Velocity Scaling
+---------------------------------------------------------------------
+
+The asymptotic rotation speed follows:
+
+    V_∞ = 45.1 · M_b^0.344   km s⁻¹
+
+The rotation curve is modeled by a saturation form:
+
+    v(r) = V_∞ [1 − exp(−(2.3 / R₉₀) r)]
+
+The numerical factor ln(10) ≈ 2.3 ensures that R₉₀ corresponds to the
+radius at which 90% of the asymptotic velocity is reached.
+
+---------------------------------------------------------------------
+3. Benchmark Galaxies
+---------------------------------------------------------------------
+
+We apply the universal profile to three well-studied Local Group spirals.
+
+---------------------------------------------------------------------
+3.1 M33 (Triangulum)
+---------------------------------------------------------------------
+
+Baryonic mass: M_b ≈ 3.25 × 10¹⁰ M☉  
+Predicted V_∞ ≈ 149 km s⁻¹  
+Observed V_max ≈ 120–130 km s⁻¹  
+
+M33 rotates more slowly than predicted for its mass. This behavior is
+consistent with its relatively diffuse mass distribution and extended
+HI disk. Within the MTS framework, M33 appears to reach velocity
+saturation less efficiently, consistent with low surface density and
+partial curvature diffusion.
+
+---------------------------------------------------------------------
+3.2 The Milky Way
+---------------------------------------------------------------------
+
+Baryonic mass: M_b ≈ 6.5 × 10¹⁰ M☉  
+Predicted V_∞ ≈ 188 km s⁻¹  
+Observed V_max ≈ 220–230 km s⁻¹  
+
+The Milky Way exhibits higher rotation speeds than predicted by the
+geometric baseline. This is plausibly associated with its central bar
+and bulge, which concentrate baryonic mass and steepen the inner
+curvature gradient, increasing the measured rotation speed near R₉₀.
+
+---------------------------------------------------------------------
+3.3 M31 (Andromeda)
+---------------------------------------------------------------------
+
+Baryonic mass: M_b ≈ 1.95 × 10¹¹ M☉  
+Predicted V_∞ ≈ 275 km s⁻¹  
+Observed V_max ≈ 260–270 km s⁻¹  
+
+M31 shows close agreement with the universal profile. Its large size
+appears to average over local irregularities, allowing the underlying
+geometric scaling to dominate.
+
+---------------------------------------------------------------------
+4. Interpretation of Deviations
+---------------------------------------------------------------------
+
+Residuals relative to the universal profile follow systematic trends:
+
+• Galaxies above the geometric prediction typically show enhanced
+  central mass concentration (bars or bulges).
+
+• Galaxies below the prediction tend to have diffuse or low-surface-
+  brightness disks with extended mass distributions.
+
+• Systems near the prediction appear close to geometric equilibrium.
+
+Across a 90-galaxy sample, the standard deviation of velocity residuals
+is approximately 12–15%, indicating that local structure introduces
+scatter without destroying the global scaling.
+
+---------------------------------------------------------------------
+5. A Geometric Ratio
+---------------------------------------------------------------------
+
+An additional empirical result is the ratio:
+
+    R_last / R₉₀ ≈ 1.3
+
+In equilibrium disks, the HI-defined structural edge typically extends
+about 30% beyond the radius where velocity saturation is reached. This
+may represent a geometric stability margin separating star-forming and
+non-star-forming regions.
+
+---------------------------------------------------------------------
+6. Physical Bounds
+---------------------------------------------------------------------
+
+Within the stated regime of applicability:
+
+• Equilibrium disk galaxies do not significantly exceed their predicted
+  V_∞ without measurable central mass concentration.
+
+• Star formation declines when the curvature-diffusion field falls below
+  the R₉₀ threshold.
+
+• Mean surface density varies weakly with mass, contributing to the
+  observed similarity in surface brightness across disk galaxies.
+
+---------------------------------------------------------------------
+7. Limitations and Scope
+---------------------------------------------------------------------
+
+The universal profile is not expected to apply without modification to:
+
+• Ultra-dwarf galaxies below the virialization threshold  
+• Strongly interacting or merging systems  
+• Heavily stripped cluster remnants  
+
+In these cases, deviations are physically meaningful and reflect
+non-equilibrium structure rather than failure of the geometric baseline.
+
+---------------------------------------------------------------------
+8. Conclusion
+---------------------------------------------------------------------
+
+A small set of geometric scaling relations derived within the MTS
+framework provides a compact description of disk galaxy structure and
+kinematics. While individual galaxies exhibit measurable deviations
+associated with internal structure and evolutionary state, the overall
+regularity of mass–radius–velocity relations suggests the presence of an
+underlying geometric organization.
+
+Future work should test these relations against larger samples, explore
+their redshift dependence, and examine their connection to environmental
+processing and galaxy evolution.
+
+---------------------------------------------------------------------
+End of Paper
+---------------------------------------------------------------------
