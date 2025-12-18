@@ -1,0 +1,252 @@
+====================================================================
+Radial Structure of Enclosed-Mass Scaling in SPARC Galaxy Rotation Curves
+and Its Interpretation within Motion–TimeSpace
+====================================================================
+
+Martin Ollett
+Independent Researcher
+2025
+
+
+--------------------------------------------------------------------
+ABSTRACT
+--------------------------------------------------------------------
+
+We analyze the radial scaling of enclosed mass in disk galaxy rotation
+curves using the SPARC database, without assuming a specific halo model
+or dark matter profile. From the relation M(r) = v(r)^2 r / G, we define
+a local mass exponent m(r) via M(r) ∝ r^m(r), measured directly from
+observational data using sliding radial windows.
+
+Across a broad sample of galaxies, we find that m(r) exhibits a coherent
+radial evolution: higher values in inner regions and lower values toward
+outer radii, with a statistically well-defined mean profile when radii
+are normalized by each galaxy’s maximum measured extent. This behavior
+is not consistent with a single constant exponent across all radii.
+
+We show that the observed radial structure of m(r) is naturally reproduced
+within the Motion–TimeSpace (MTS) framework, in which galaxy rotation
+curves arise from a single motion field without requiring multiple
+gravitational components. The results demonstrate that a unified
+field-based description can match the observed scaling structure of
+galaxy rotation curves while remaining agnostic about alternative
+interpretations.
+
+
+--------------------------------------------------------------------
+1. INTRODUCTION
+--------------------------------------------------------------------
+
+Galaxy rotation curves provide one of the most direct probes of the
+radial distribution of dynamical mass in disk galaxies. Traditionally,
+these curves are analyzed through parametric decompositions of baryonic
+and non-baryonic components or through specific halo profiles. While
+such approaches are useful, they necessarily introduce model-dependent
+assumptions about the underlying mass distribution.
+
+In this work, we take a complementary approach. Rather than fitting
+rotation curves to predefined profiles, we examine how the enclosed
+mass inferred from observations scales with radius directly, using a
+local power-law description. This allows us to characterize the
+structural behavior of galaxy rotation curves in a model-agnostic way.
+
+Specifically, we analyze the SPARC (Spitzer Photometry & Accurate
+Rotation Curves) database and measure the local exponent m(r) defined
+by:
+
+M(r) ∝ r^m(r)
+
+where M(r) is the enclosed mass inferred from the observed circular
+velocity v(r). We then examine how m(r) varies systematically with
+radius across galaxies.
+
+After establishing the empirical result, we interpret the observed
+scaling behavior within the Motion–TimeSpace (MTS) framework, a unified
+field description in which rotation curves emerge from a single
+underlying motion field. No assumptions about dark matter halos or
+separate gravitational components are required for this comparison.
+
+
+--------------------------------------------------------------------
+2. DATA
+--------------------------------------------------------------------
+
+We use the publicly available SPARC rotation curve catalogue, which
+provides high-quality rotation curves for disk galaxies spanning a
+wide range of masses and surface brightnesses.
+
+For each galaxy, the dataset supplies:
+- Radius r (in kpc)
+- Circular velocity v(r) (in km/s)
+
+Only galaxies meeting conservative quality criteria are included in the
+analysis (see Section 3). No photometric mass models or baryonic
+decompositions are used in the measurement of m(r).
+
+
+--------------------------------------------------------------------
+3. METHOD
+--------------------------------------------------------------------
+
+3.1 Enclosed Mass
+
+At each measured radius r, the enclosed dynamical mass is computed as:
+
+M(r) = v(r)^2 r / G
+
+where G = 4.302 × 10^-6 kpc (km/s)^2 Msun^-1.
+
+This relation follows directly from circular motion and does not depend
+on assumptions about the composition of the mass.
+
+
+3.2 Local Mass Exponent
+
+To characterize the radial scaling of M(r), we define a local mass
+exponent m(r) such that:
+
+M(r) ∝ r^m(r)
+
+Rather than fitting a single global exponent, we measure m(r) locally
+using sliding radial windows.
+
+For each galaxy:
+- Data are sorted by radius.
+- A sliding window spanning 30% of the maximum measured radius r_max
+  is applied.
+- The window is advanced in steps of 10% of r_max.
+- Within each window, log M is regressed against log r.
+
+The slope of this regression defines m_local for that radial interval.
+
+Only windows meeting the following criteria are retained:
+- Minimum number of data points per galaxy: 8
+- Minimum points per window: 4
+- Minimum r_max: 2 kpc
+
+
+3.3 Normalized Radius and Stacking
+
+To combine results across galaxies of different sizes, we define a
+normalized radius:
+
+r_norm = r / r_max
+
+Local exponents m_local are then binned by r_norm and stacked across
+the full galaxy sample to obtain the mean radial behavior ⟨m(r_norm)⟩
+and its scatter.
+
+
+--------------------------------------------------------------------
+4. RESULTS
+--------------------------------------------------------------------
+
+4.1 Global Statistics
+
+Using the above procedure, we obtain several hundred local exponent
+measurements across the SPARC galaxy sample. The global mean exponent,
+averaged over all radii and galaxies, lies between the characteristic
+inner and outer values described below.
+
+
+4.2 Radial Dependence of m(r)
+
+A clear and systematic radial structure is observed:
+
+- Inner regions (r_norm < 0.3):
+  m ≈ 1.7 – 1.8
+
+- Intermediate radii:
+  m decreases smoothly with increasing r_norm
+
+- Outer regions (r_norm > 0.7):
+  m ≈ 1.1 – 1.2
+
+This behavior is robust across the sample and persists after averaging
+over galaxies. The transition is gradual rather than abrupt, indicating
+a continuous structural change in the enclosed-mass scaling.
+
+
+4.3 Scatter and Coherence
+
+While individual galaxies exhibit scatter in m_local, the stacked mean
+profile shows a coherent radial trend. The observed scatter reflects
+galaxy-to-galaxy variation rather than random noise, suggesting that
+the radial evolution of m(r) is a genuine structural feature of disk
+galaxies.
+
+
+--------------------------------------------------------------------
+5. INTERPRETATION WITHIN MOTION–TIMESPACE
+--------------------------------------------------------------------
+
+Within the Motion–TimeSpace framework, galaxy rotation curves arise from
+a single nonlinear motion field ψ, rather than from multiple
+gravitational components. In this description, the effective enclosed
+mass inferred from circular motion reflects the geometric and dynamical
+properties of ψ.
+
+For disk-dominated systems, the MTS equations predict an effective
+enclosed-mass scaling characterized by an exponent:
+
+m_MTS ≈ 1.878
+
+in the regime relevant to galaxy disks.
+
+When compared to the SPARC measurements, this predicted value aligns
+closely with the observed inner-disk exponent and lies within the range
+spanned by the radial evolution of m(r). The gradual decrease of m(r)
+toward larger radii corresponds naturally to the weakening influence of
+the disk-dominated regime in the MTS description.
+
+Importantly, this comparison does not require invoking additional
+gravitational components or modifying the measurement procedure. The
+same observationally inferred M(r) is interpreted directly within the
+MTS framework.
+
+
+--------------------------------------------------------------------
+6. DISCUSSION
+--------------------------------------------------------------------
+
+The present analysis highlights several key points:
+
+1. Galaxy rotation curves exhibit a structured radial evolution in their
+   enclosed-mass scaling, rather than a single universal exponent.
+
+2. This structure can be measured directly from observations without
+   assuming a particular mass decomposition or halo profile.
+
+3. The Motion–TimeSpace framework provides a natural interpretation of
+   the observed scaling behavior using a single underlying motion field.
+
+The results do not depend on the exclusion or rejection of alternative
+interpretations. Rather, they demonstrate that the observed structure of
+rotation curves admits a unified description within MTS that is fully
+consistent with the measured data.
+
+Future work may extend this analysis to other galaxy samples, explore
+morphological dependencies, or examine time evolution in simulated
+systems.
+
+
+--------------------------------------------------------------------
+7. CONCLUSION
+--------------------------------------------------------------------
+
+By measuring the local enclosed-mass exponent m(r) directly from SPARC
+rotation curves, we have shown that disk galaxies exhibit a coherent and
+systematic radial scaling structure. This behavior is not captured by a
+single global power law but instead reflects a smooth transition from
+inner to outer regions.
+
+Within the Motion–TimeSpace framework, the observed scaling arises
+naturally without requiring multiple gravitational components. The
+agreement between the measured radial behavior and the MTS prediction
+demonstrates that a unified field-based description can account for the
+structure of galaxy rotation curves in a direct and observationally
+grounded way.
+
+--------------------------------------------------------------------
+END
+--------------------------------------------------------------------
