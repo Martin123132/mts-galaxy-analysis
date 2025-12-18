@@ -1,0 +1,193 @@
+============================================================
+A UNIVERSAL CROSSING RADIUS IN DISK GALAXIES
+============================================================
+
+Author: Martin Ollett
+Affiliation: Independent Researcher
+Year: 2025
+
+
+------------------------------------------------------------
+ABSTRACT
+------------------------------------------------------------
+
+We investigate the radius at which enclosed dark matter mass equals enclosed
+baryonic mass in disk galaxies, defined as the crossing radius r_cross.
+Using high-quality SPARC rotation curves, we identify a narrow and
+morphology-dependent scaling between r_cross and the stellar half-mass
+radius R_*.
+
+We test this relation using the IllustrisTNG cosmological simulations.
+When restricted to disk-dominated galaxies, simulated systems reproduce
+the observed scaling with statistical consistency. The median normalized
+crossing radius agrees with the SPARC value within < 1σ.
+
+Including bulge-dominated galaxies significantly broadens the distribution,
+explaining apparent discrepancies reported in earlier simulation-based
+studies. These results indicate that the crossing-radius relation is a
+robust structural property of disk galaxies and that residual tensions in
+ΛCDM simulations arise primarily from morphology mixing rather than incorrect
+radial mass scaling.
+
+
+------------------------------------------------------------
+1. INTRODUCTION
+------------------------------------------------------------
+
+The radial distribution of baryonic and dark matter in galaxies remains a
+central problem in astrophysics. While ΛCDM simulations reproduce large-scale
+structure successfully, persistent discrepancies appear on galactic scales,
+including overly concentrated dark matter halos and incorrect morphological
+fractions.
+
+Rotation curves provide a direct probe of enclosed mass profiles. In this
+work, we focus on a particularly simple and physically transparent quantity:
+the radius at which baryonic and dark matter masses become equal.
+
+Unlike asymptotic velocity measures or detailed parametric profile fitting,
+the crossing radius depends only on cumulative mass ordering. This makes it
+robust against noise, resolution effects, and model assumptions.
+
+Observational evidence from the SPARC database suggests a near-universal
+relation between this crossing radius and the stellar scale length in disk
+galaxies. Here, we test whether this relation is reproduced in modern
+hydrodynamical simulations and clarify the role of galaxy morphology.
+
+
+------------------------------------------------------------
+2. DATA
+------------------------------------------------------------
+
+2.1 SPARC Rotation Curves
+
+We use the SPARC database of high-quality galaxy rotation curves. Galaxies
+are selected based on sufficient radial extent and data quality to allow
+reliable enclosed mass reconstruction.
+
+Baryonic and total mass profiles are derived directly from the observed
+rotation curves using standard dynamical relations.
+
+2.2 IllustrisTNG Simulations
+
+Simulated galaxies are drawn from the IllustrisTNG project at redshift z = 0.
+Subhalos are selected in the stellar mass range:
+
+  10⁹ M☉ ≤ M_* ≤ 10¹¹ M☉
+
+This range matches the SPARC sample. Particle-level data are used to compute
+enclosed dark matter and baryonic mass profiles.
+
+Galaxy morphology is classified using a kinematic and structural proxy based
+on stellar mass distribution and half-mass radius, separating disk-dominated
+and bulge-dominated systems.
+
+
+------------------------------------------------------------
+3. METHODOLOGY
+------------------------------------------------------------
+
+3.1 Enclosed Mass Profiles
+
+For each galaxy, cumulative enclosed mass profiles are constructed:
+
+  M_dm(r)   = enclosed dark matter mass
+  M_bar(r)  = enclosed baryonic mass (stars + gas)
+
+Particles (or inferred mass elements) are sorted by radius, and cumulative
+sums are computed.
+
+3.2 Definition of the Crossing Radius
+
+The crossing radius r_cross is defined as the smallest radius satisfying:
+
+  M_dm(r) = M_bar(r)
+
+Linear interpolation between adjacent radial bins is used to obtain
+sub-bin precision.
+
+3.3 Normalization
+
+To remove trivial mass scaling, the crossing radius is normalized by the
+stellar half-mass radius R_*:
+
+  r̃_cross = r_cross / R_*
+
+3.4 Statistical Treatment
+
+Distributions are summarized using medians rather than means.
+Scatter is quantified using the median absolute deviation (MAD).
+
+Bootstrap resampling is used to estimate confidence intervals and to assess
+statistical significance.
+
+
+------------------------------------------------------------
+4. RESULTS
+------------------------------------------------------------
+
+4.1 SPARC Observations
+
+Disk galaxies in the SPARC sample exhibit a narrow distribution of normalized
+crossing radii:
+
+  r̃_cross ≈ 0.36 ± 0.05
+
+This value shows little dependence on stellar mass.
+
+4.2 IllustrisTNG — Full Sample
+
+When all morphologies are included, TNG galaxies show a broad and skewed
+distribution of r̃_cross, with a median significantly larger than the SPARC
+value and substantial scatter.
+
+4.3 IllustrisTNG — Disk-Only Sample
+
+Restricting the analysis to disk-dominated systems yields:
+
+  Number of galaxies: 16
+  Median r̃_cross    : 0.308
+  68% CI             : [0.196, 0.410]
+  Offset from SPARC  : −0.052
+  Significance       : 0.54σ
+
+The SPARC prediction lies well within the 68% confidence interval.
+
+4.4 Bootstrap Validation
+
+Bootstrap resampling confirms that the observed agreement is robust and not
+driven by small-number statistics.
+
+
+------------------------------------------------------------
+5. DISCUSSION
+------------------------------------------------------------
+
+The agreement between observed and simulated disk galaxies indicates that
+the crossing-radius relation is a genuine structural property of disk systems.
+
+The apparent disagreement observed in full simulation samples arises from
+the inclusion of bulge-dominated galaxies, which are known to be overproduced
+and overly concentrated in ΛCDM simulations.
+
+This result separates two issues often conflated:
+
+  1) Radial mass scaling — reproduced correctly for disks
+  2) Morphological population statistics — still problematic in simulations
+
+
+------------------------------------------------------------
+6. CONCLUSIONS
+------------------------------------------------------------
+
+• Disk galaxies exhibit a near-universal crossing radius relative to stellar
+  scale length.
+
+• This relation is reproduced in IllustrisTNG when morphology is controlled.
+
+• Discrepancies in simulations primarily stem from morphology mixing, not
+  incorrect radial mass physics.
+
+• The crossing radius provides a simple, robust diagnostic for comparing
+  galaxy structure across observations and simulations.
+
+
