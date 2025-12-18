@@ -6,7 +6,6 @@ Mass-Velocity Scaling Relation for Galaxy Rotation Curves
 This code analyzes the empirical relationship between galaxy baryonic mass
 and rotation curve asymptotic velocity using real SPARC database measurements.
 
-Author: Your Name
 Data: SPARC database (Lelli et al. 2016, AJ, 152, 157)
 """
 
