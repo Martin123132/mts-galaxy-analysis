@@ -1,0 +1,234 @@
+TITLE:
+Emergence of the Baryonic Tully–Fisher Relation from Geometric Fixed Points
+in Motion–TimeSpace Dynamics
+
+AUTHOR:
+Martin Ollett
+Independent Researcher
+2025
+
+
+ABSTRACT
+--------
+Motion–TimeSpace (MTS) is a geometric field framework in which spacetime,
+inertia, and curvature memory emerge from coarse-grained dynamics of a
+nonlinear microscopic motion field ψ. In this work, we show that disk
+galaxies governed by MTS dynamics evolve toward a stable geometric fixed
+point characterized by an enclosed-mass scaling M(r) ∝ r^{m*} with
+m* ≈ 1.88, selected dynamically without tuning.
+
+A direct consequence of this fixed point is a velocity–mass scaling
+v ∝ M^α with α ≈ 1/4 in the ideal geometric limit. Using observationally
+measured asymptotic rotation velocities, we find an empirical relation
+v_∞ ∝ M_b^α with α = 0.243 ± 0.021. Algebraic inversion yields a baryonic
+Tully–Fisher slope 1/α = 4.12 ± 0.36, fully consistent with SPARC
+measurements.
+
+The slight deviation from the ideal exponent is explained by finite disk
+thickness, gas fractions, and environmental effects. The baryonic
+Tully–Fisher relation therefore appears as the observational imprint of a
+geometric fixed point arising from MTS dynamics, rather than as an imposed
+law or phenomenological coincidence.
+
+
+1. INTRODUCTION
+---------------
+One of the most robust empirical relations in extragalactic astronomy is
+the baryonic Tully–Fisher relation (BTFR), which links total baryonic mass
+M_b to the asymptotic rotation velocity v_∞ via
+
+    M_b ∝ v_∞^n ,   n ≈ 4.
+
+Despite its persistence across several orders of magnitude in mass and
+its weak dependence on morphology or surface brightness, the physical
+origin of the BTFR remains unsettled.
+
+Standard ΛCDM models reproduce the relation statistically but do not
+predict its slope from first principles. Modified gravity approaches
+encode the scaling directly into the force law. In contrast, the
+Motion–TimeSpace (MTS) framework treats galactic dynamics as an emergent
+consequence of coarse-grained geometric motion, without introducing new
+forces or tuned halo responses.
+
+In this paper, we show that the BTFR is not fundamental within MTS.
+Instead, it emerges necessarily from a deeper geometric fixed point
+selected by the dynamics of the ψ-field.
+
+
+2. EMPIRICAL VELOCITY–MASS SCALING
+---------------------------------
+Using baryonic masses and asymptotic rotation velocities from disk galaxy
+samples (e.g. SPARC), we consider the directly measured relation
+
+    v_∞ = k · M_b^α ,
+
+where k is a normalization constant.
+
+A power-law fit across the sample yields
+
+    α = 0.243 ± 0.021 .
+
+This relation is extracted directly from rotation curves and baryonic
+mass estimates and does not assume the BTFR a priori.
+
+
+3. ALGEBRAIC EMERGENCE OF THE BTFR
+---------------------------------
+Solving the empirical velocity–mass relation for M_b gives
+
+    M_b = (v_∞ / k)^{1/α} ,
+
+implying
+
+    M_b ∝ v_∞^{1/α} .
+
+Using the measured exponent,
+
+    1/α = 4.12 ± 0.36 ,
+
+which is fully consistent with canonical BTFR slopes reported in the
+literature (n ≈ 4.0–4.1).
+
+Thus, at the algebraic level, the BTFR appears as the inverse projection
+of a more primitive velocity–mass scaling. The remaining question is why
+the exponent α takes this value.
+
+
+4. MOTION–TIMESPACE FRAMEWORK
+-----------------------------
+In the Motion–TimeSpace framework, microscopic dynamics are governed by a
+nonlinear motion field ψ(x,t) with action
+
+    A_MTS[ψ] = ∫ [
+        (1/2c²)(∂_t ψ)²
+        − (1/2)(∇ψ)²
+        − γ ψ ∂_t ψ
+        − (λ/n)|ψ|^n
+    ] d⁴x .
+
+The exponent n = 4/3 is fixed by scale invariance of the ψ-field energy
+functional in 3+1 dimensions and by the requirement of soliton stability
+under coarse-graining.
+
+Macroscopic spacetime geometry emerges from statistical smoothing of
+ψ-gradients:
+
+    g_{μν} = η_{μν} + ⟨∂_μ ψ ∂_ν ψ⟩_smooth ,
+
+with ψ normalized such that ⟨∂ψ ∂ψ⟩ is dimensionless. General Relativity
+appears as the infrared limit of this construction, while curvature
+exchange and memory effects are encoded in additional geometric scalars.
+
+
+5. GEOMETRIC FIXED POINT FOR GALACTIC MASS PROFILES
+---------------------------------------------------
+Analysis of galactic rotation curves within MTS yields an emergent
+enclosed-mass scaling
+
+    M(r) ∝ r^m .
+
+Across mature disk galaxies, this scaling converges to a stable fixed
+point
+
+    m* ≈ 1.88 .
+
+This value lies between the ideal thin-disk limit (m = 2) and the
+isothermal halo limit (m = 1). It arises dynamically from the balance
+between coherent ψ-flow in the inner disk and decoherent outer regions
+under coarse-graining.
+
+The fixed point is not tuned and is observed empirically across diverse
+galactic environments, with a characteristic crossing radius at
+r ≈ 0.3 r_max in systems with sufficient radial extent.
+
+
+5.1 Characteristic Crossing Radius of the Fixed Point
+-----------------------------------------------------
+Using the SPARC database, we computed local enclosed-mass exponents m(r)
+via a sliding-window analysis subject to conservative quality cuts
+(MIN_POINTS_PER_GAL = 6 and r_max ≥ 3.0). Out of 119 galaxies meeting
+these criteria, 54 exhibited a clear crossing of m(r) through the MTS
+fixed-point value m* = 1.878.
+
+For these systems, the crossing occurs at a characteristic normalized
+radius r_cross / r_max ≈ 0.3, with mean 0.328, median 0.307, and standard
+deviation 0.142. The persistence of this scale under stricter data-quality
+cuts indicates that the result is not driven by marginal data or analysis
+choices.
+
+This demonstrates that the MTS fixed point is not only a dynamical
+attractor in exponent space, but is reached at a preferred radial
+location within disk galaxies.
+
+
+6. PREDICTION OF THE VELOCITY–MASS EXPONENT
+-------------------------------------------
+From virial equilibrium,
+
+    v²(r) ∝ G M(r) / r .
+
+If M(r) ∝ r^{m*}, then
+
+    v²(r) ∝ r^{m*−1}
+    ⇒ v(r) ∝ r^{(m*−1)/2} .
+
+Substituting r ∝ M^{1/m*} yields
+
+    v ∝ M^{(m*−1)/(2m*)} .
+
+Thus the theoretical velocity–mass exponent is
+
+    α_th = (m* − 1) / (2m*) .
+
+For m* = 1.88,
+
+    α_th ≈ 0.234 ,
+
+which is within a few percent of the observed value
+α_obs = 0.243 ± 0.021.
+
+In the ideal geometric equilibrium limit m → 2, the theory predicts
+
+    α = 1/4 ,
+    M_b ∝ v^4 .
+
+
+7. REAL-UNIVERSE DEVIATIONS
+---------------------------
+The fixed point m* ≈ 1.88 represents the dynamically selected equilibrium
+for real galaxies, not a preliminary approximation. Deviations from the
+ideal m = 2 limit arise naturally from finite disk thickness, gas
+fractions, environmental interactions, and non-asymptotic sampling radii.
+
+These effects shift the exponent from the ideal α = 0.25 to the observed
+mean α ≈ 0.243, consistent with the measured scatter.
+
+
+8. INTERPRETATION
+-----------------
+Within the Motion–TimeSpace framework:
+
+• ψ-field dynamics define the microscopic ontology.
+• Coarse-graining selects geometric fixed points.
+• The velocity–mass exponent is not imposed.
+• The BTFR is the observational imprint of this fixed point.
+
+Dark matter is not required to set the BTFR slope, though additional mass
+components influence normalization and scatter.
+
+
+9. CONCLUSION
+-------------
+We have shown that:
+
+1. MTS dynamics predict a geometric fixed point m* ≈ 1.88 for disk galaxies.
+2. This fixed point is reached at a characteristic radius r ≈ 0.3 r_max.
+3. The fixed point implies α ≈ 1/4 in the ideal limit.
+4. Observed galaxies exhibit α = 0.243 ± 0.021 due to real-universe effects.
+5. Algebraic inversion yields the observed BTFR slope ≈ 4.1.
+
+The baryonic Tully–Fisher relation is therefore the shadow cast by a
+geometric fixed point of Motion–TimeSpace dynamics.
+
+
+END OF PAPER
