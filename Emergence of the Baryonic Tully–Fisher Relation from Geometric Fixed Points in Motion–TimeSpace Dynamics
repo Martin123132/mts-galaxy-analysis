@@ -160,6 +160,26 @@ This demonstrates that the MTS fixed point is not only a dynamical
 attractor in exponent space, but is reached at a preferred radial
 location within disk galaxies.
 
+5.2 Properties of Non-Crossing Galaxies
+--------------------------------------
+Out of the 119 galaxies for which reliable local mass exponents m(r) could
+be computed, 65 systems do not exhibit a crossing of m(r) through the MTS
+fixed-point value m* = 1.878 within the observed radial range.
+
+These non-crossing galaxies are systematically distinct from the crossing
+population. On average, they are significantly more massive (mean
+M_proxy ≈ 4.2 × 10^11 M_sun), more extended (mean r_max ≈ 31 kpc), and
+faster rotating (mean v_max ≈ 185 km/s). All three properties show
+substantially higher median values and broader scatter compared to
+galaxies that do exhibit a crossing.
+
+The absence of a crossing in these systems is consistent with their local
+mass-exponent profiles remaining below m* across the measured radial
+range. This behavior aligns with the flatter rotation curves and more
+isothermal mass distributions characteristic of high-mass disk galaxies.
+Rather than contradicting the existence of a fixed point, this suggests
+that m* acts as a dynamical attractor or upper envelope that is not
+necessarily crossed by all systems within observable radii.
 
 6. PREDICTION OF THE VELOCITY–MASS EXPONENT
 -------------------------------------------
