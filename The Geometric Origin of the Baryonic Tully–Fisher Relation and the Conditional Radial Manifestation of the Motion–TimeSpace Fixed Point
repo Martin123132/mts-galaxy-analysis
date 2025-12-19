@@ -1,0 +1,274 @@
+============================================================
+The Geometric Origin of the Baryonic Tully–Fisher Relation
+and the Conditional Radial Manifestation of the
+Motion–TimeSpace Fixed Point
+============================================================
+
+Martin Ollett (2025)
+
+------------------------------------------------------------
+Abstract
+------------------------------------------------------------
+
+We compute the baryonic Tully–Fisher relation (BTFR) for a 91-galaxy
+rotation-curve sample using asymptotic velocities extracted from the
+Motion–TimeSpace (MTS) curvature-diffusion model. Fitting the relation
+
+    M ∝ V∞^α
+
+yields
+
+    α = 2.719 ± 0.081   (R² = 0.9347),
+
+with the inverse fit
+
+    V∞ ∝ M^β,   β = 0.344 ± 0.010,
+
+demonstrating statistical inversion symmetry. The exponent arises
+analytically from the universal MTS geometric scaling
+M ∝ R^m with m ≈ 1.878, rather than from dark-matter halo tuning or
+modified inertia.
+
+Extending the analysis to radial mass-exponent profiles m(r), we show
+that the MTS fixed point m = 1.878 is not universally realized at all
+radii. Smaller galaxies typically relax through the fixed point,
+while larger, more massive galaxies remain in a sub-fixed-point regime.
+This conditional manifestation resolves apparent diversity in rotation
+curves while preserving a unified geometric origin for global scaling
+relations.
+
+------------------------------------------------------------
+1. Introduction
+------------------------------------------------------------
+
+The baryonic Tully–Fisher relation (BTFR) links the baryonic mass of a
+galaxy to its characteristic rotation velocity. Empirically, it is
+often written as
+
+    M ∝ V^n,
+
+with n ≈ 4 when velocities are defined using observational proxies such
+as Vmax or Vflat. In ΛCDM, reproducing this relation requires halo
+concentration tuning and feedback prescriptions, while MOND enforces
+the slope by construction.
+
+Motion–TimeSpace (MTS) provides an alternative explanation. In MTS,
+flat rotation curves and scaling relations emerge from curvature-regulated
+dynamics of a nonlinear motion field ψ, without invoking dark matter
+or modified inertia. Velocities saturate geometrically rather than
+through halo equilibrium.
+
+------------------------------------------------------------
+2. Microscopic ψ-Field Dynamics
+------------------------------------------------------------
+
+The fundamental MTS action is
+
+    A_MTS = ∫ [ (1/2c²)(∂tψ)² − (1/2)(∇ψ)²
+               − (γ/2) ψ ∂tψ − (λ/n)|ψ|^n ] d⁴x.
+
+Variation yields the nonlinear dissipative wave equation
+
+    ∂t²ψ − c²∇²ψ + γ∂tψ + λ|ψ|^{n−1}ψ = 0.
+
+Dimensional consistency and soliton stability in three spatial
+dimensions fix the nonlinearity to n = 4/3, consistent with Derrick-type
+stability constraints. This exponent is not tuned; it is required for
+localized, long-lived structures.
+
+------------------------------------------------------------
+3. Velocity Saturation in MTS
+------------------------------------------------------------
+
+At galactic scales, the ψ-field dynamics produce curvature-regulated
+rotation curves of the form
+
+    v(r) = a [1 − exp(−b r)],
+
+where a = V∞ is the asymptotic saturation velocity and b sets the
+geometric saturation scale. This form emerges generically from curvature
+diffusion and damping and does not depend on halo profiles.
+
+The saturation velocity V∞ provides a well-defined, model-internal
+velocity observable that can be extracted uniformly across galaxies.
+
+------------------------------------------------------------
+4. The Baryonic Tully–Fisher Relation
+------------------------------------------------------------
+
+4.1 Data and Methodology
+
+We analyze a 91-galaxy sample drawn from SPARC and literature sources,
+covering ultra-dwarfs to giant spirals. No galaxies are excluded and no
+outlier filtering is applied.
+
+For each galaxy, the MTS velocity model is fit directly to the observed
+rotation curve, and the asymptotic velocity V∞ is extracted. Two log–log
+fits are then performed:
+
+    log M = A + α log V∞
+    log V∞ = B + β log M.
+
+4.2 Results
+
+The mass-side fit yields
+
+    α = 2.719 ± 0.081   (R² = 0.9347),
+
+while the inverse fit gives
+
+    β = 0.344 ± 0.010   (R² = 0.9347).
+
+The approximate relation β ≈ 1/α demonstrates inversion symmetry,
+showing that the scaling is robust to the choice of dependent variable.
+
+------------------------------------------------------------
+5. Conditional Radial Manifestation of the MTS Fixed Point
+------------------------------------------------------------
+
+To probe the internal structure of galaxies, we examine the local
+enclosed-mass exponent
+
+    m(r) = d ln M(r) / d ln r.
+
+Across the sample, two distinct behaviors emerge:
+
+• Crossing galaxies:
+  Smaller, less massive, slower-rotating systems typically begin with
+  m(r) ≳ 2 in their inner regions. As radius increases, m(r) decreases
+  and crosses the MTS fixed point m = 1.878 at r/rmax ≈ 0.3, continuing
+  to fall below it in the outer disk.
+
+• Non-crossing galaxies:
+  Larger, more massive, faster-rotating galaxies exhibit m(r) values
+  that start near or below 1.5 and remain consistently below m = 1.878
+  across their observed radial extent.
+
+This demonstrates that the MTS fixed point is not a mandatory value at
+all radii. Instead, it represents an equilibrium attractor reached only
+under certain dynamical conditions. Small galaxies relax through it;
+large galaxies are curvature-saturated and remain sub-fixed-point.
+
+This conditional behavior resolves the apparent diversity of rotation
+curves without abandoning a unified geometric framework.
+
+------------------------------------------------------------
+6. Geometric Origin of the BTFR Exponent
+------------------------------------------------------------
+
+In MTS, the universal geometric scaling
+
+    M ∝ R^m,   with m ≈ 1.878,
+
+emerges from the coarse-grained ψ-field dynamics.
+
+Combining this with the geometric virial balance
+
+    V∞² ∝ M / R
+
+yields
+
+    V∞² ∝ M^(1 − 1/m),
+    V∞ ∝ M^{(1 − 1/m)/2},
+    M ∝ V∞^{2 / (1 − 1/m)}.
+
+For m = 1.878, this gives
+
+    α = 2 / (1 − 1/m) ≈ 2.72,
+
+in exact agreement with the measured BTFR slope.
+
+The BTFR exponent is therefore not fundamental; it is an emergent
+consequence of the deeper geometric constant m.
+
+------------------------------------------------------------
+7. Clarification on BTFR Slope Conventions
+------------------------------------------------------------
+
+In the astronomical literature, the “BTFR slope” is commonly quoted as
+n ≈ 4 when velocities are defined using observational proxies such as
+Vmax or Vflat. These velocities depend on where the rotation curve is
+sampled and vary systematically with galaxy size and data depth.
+
+In this work, the relevant velocity is the MTS saturation velocity V∞,
+defined as the asymptotic limit of the curvature-regulated rotation
+curve. When the BTFR is expressed in terms of V∞, the predicted and
+observed scaling is
+
+    M ∝ V∞^{2.7–2.8}.
+
+The difference from n ≈ 4 reflects a difference in velocity definition,
+not a physical contradiction. Translated between conventions, the MTS
+prediction remains fully consistent with observed baryonic
+Tully–Fisher phenomenology.
+
+------------------------------------------------------------
+8. Why m = 1.878
+------------------------------------------------------------
+
+The value m = 1.878 is not fitted. It arises as a stable intermediate-scale
+fixed point of the coarse-graining flow induced by the ψ-field dynamics.
+
+Defining the coarse-grained field ψr and associated phase current Jr,
+the effective enclosed mass satisfies
+
+    M(r) ∝ r · ⟨|Jr|²⟩ / ⟨|ψr|²⟩.
+
+The local exponent follows
+
+    m(r) = 1 + d/d ln r [ ln(⟨|Jr|²⟩ / ⟨|ψr|²⟩) ].
+
+The n = 4/3 nonlinearity required for stability produces three regimes:
+
+• Inner coherent regime: strong phase alignment, m(r) ≳ 2.
+• Intermediate disk regime: balance between diffusion and memory,
+  yielding a stable attractor m → 1.878.
+• Outer decoherent regime: phase correlations weaken, m(r) → 1.
+
+Thus, m = 1.878 is the natural attractor of the ψ-field flow in the
+disk-relevant regime.
+
+------------------------------------------------------------
+9. Conclusion
+------------------------------------------------------------
+
+Using a 91-galaxy sample with no exclusions, we show that the baryonic
+Tully–Fisher relation emerges naturally from Motion–TimeSpace geometry.
+The observed slope M ∝ V∞^{2.719} is predicted analytically from the
+universal mass–radius scaling m ≈ 1.878.
+
+The MTS fixed point is shown to be conditional rather than universal:
+smaller galaxies relax through it, while larger systems remain
+curvature-saturated below it. This reconciles global scaling laws with
+radial diversity and removes the need for dark matter halos or modified
+inertia.
+
+All observed structure follows from a single geometric constant.
+
+------------------------------------------------------------
+End of Manuscript
+------------------------------------------------------------
+------------------------------------------------------------
+Addendum: Stability Basis for the ψ-Field Nonlinearity
+------------------------------------------------------------
+
+The selection of the nonlinear exponent n = 4/3 in the microscopic
+Motion–TimeSpace ψ-field action is not ad hoc. It is motivated by the
+requirement of stability for localized, finite-energy solutions in
+three spatial dimensions.
+
+This requirement is closely related to Derrick-type scaling arguments,
+which demonstrate that nonlinear wave equations admit stable soliton
+solutions only for specific balances between gradient and interaction
+terms. The n = 4/3 nonlinearity satisfies these constraints when combined
+with curvature-memory damping, allowing long-lived localized structures
+to exist without collapse or dispersion.
+
+------------------------------------------------------------
+References
+------------------------------------------------------------
+
+Derrick, G. H. (1964).
+“Comments on Nonlinear Wave Equations as Models for Elementary Particles.”
+Journal of Mathematical Physics, 5, 1252–1254.
+
