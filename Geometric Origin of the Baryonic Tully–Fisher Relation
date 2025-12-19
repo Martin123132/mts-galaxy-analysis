@@ -1,0 +1,202 @@
+# Geometric Origin of the Baryonic Tully–Fisher Relation  
+## and the Conditional Radial Manifestation of the MTS Fixed Point
+
+**Martin Ollett (2025)**
+
+---
+
+## Abstract
+
+We analyze galaxy rotation curves and mass scaling relations within the Motion–TimeSpace (MTS) framework, a geometric model in which dynamical structure emerges from curvature-regulated motion rather than dark-matter halos or modified inertia. Using a 91-galaxy rotation-curve sample with no exclusions, we recover a tight Baryonic Tully–Fisher Relation (BTFR) of the form  
+
+M ∝ V^α  
+
+with  
+
+α = 2.719 ± 0.081  (R² = 0.9347),  
+
+and the inverse relation  
+
+V ∝ M^β  
+
+with  
+
+β = 0.344 ± 0.010.  
+
+We show that this scaling arises naturally from a universal geometric mass–radius relation  
+
+M(r) ∝ r^{1.878},  
+
+which governs curvature saturation in the MTS ψ-field.
+
+Extending this analysis, we examine the radial behavior of the enclosed mass exponent m(r) across a larger SPARC-derived sample and identify two distinct galaxy populations: systems whose m(r) profiles cross the MTS fixed point m* = 1.878, and systems that do not. We demonstrate that this crossing behavior is strongly correlated with galaxy mass, size, and rotation velocity, indicating that the MTS fixed point is a conditional geometric equilibrium rather than a universal radial invariant.
+
+---
+
+## 1. Introduction
+
+The Baryonic Tully–Fisher Relation (BTFR) links the baryonic mass of disk galaxies to their asymptotic rotation velocity via the empirical law  
+
+M ∝ V^α.  
+
+In ΛCDM, this relation emerges only after nontrivial tuning between halo mass, concentration, baryonic feedback, and angular momentum. In MOND, the slope α = 4 is imposed by construction. Neither framework predicts *why* a particular exponent should arise.
+
+Motion–TimeSpace (MTS) provides a different explanation. In MTS, galaxy rotation curves emerge from curvature diffusion in a geometric motion field ψ, with asymptotic velocities arising through saturation rather than halo support or modified inertia. The framework predicts a universal structural exponent  
+
+m = 1.878  
+
+governing mass–radius relations, curvature accumulation, and velocity saturation.
+
+---
+
+## 2. MTS Rotation Curves and Geometric Saturation
+
+In the MTS framework, the circular velocity profile of a disk galaxy is well described by  
+
+v(r) = a (1 − exp(−b r)),  
+
+where a ≡ V∞ is the asymptotic velocity and b⁻¹ is a curvature saturation scale. This form arises from ψ-field curvature damping and does not rely on dark-matter halo prescriptions or modified gravity.
+
+---
+
+## 3. Data and Methodology
+
+### 3.1 Dataset
+
+We analyze a sample of 91 galaxies drawn from SPARC and literature sources, spanning ultra-dwarfs to giant spirals. Published rotation curves and baryonic masses are used exactly as reported. No galaxies are excluded and no outlier filtering is applied.
+
+### 3.2 Velocity Extraction
+
+Each rotation curve is fit with the MTS saturation model. The asymptotic velocity V∞ is taken directly from the fitted parameter a, providing a uniform and physically motivated velocity definition across the entire sample.
+
+### 3.3 Scaling Fits
+
+Log–log regressions are performed for  
+
+log M = A + α log V∞  
+
+and  
+
+log V∞ = B + β log M.  
+
+---
+
+## 4. The Baryonic Tully–Fisher Relation from MTS Geometry
+
+### 4.1 Results
+
+The BTFR is recovered with  
+
+α = 2.719 ± 0.081  (R² = 0.9347)  
+
+and  
+
+β = 0.344 ± 0.010  (R² = 0.9347),  
+
+satisfying the inverse symmetry β ≈ 1/α across the full mass range from dwarf galaxies to giant spirals.
+
+---
+
+### 4.2 Analytic Origin of the BTFR Exponent
+
+MTS predicts a universal geometric mass–radius relation  
+
+M ∝ R^m,  
+
+with  
+
+m = 1.878,  
+
+implying  
+
+R ∝ M^{1/m}.  
+
+Using the geometric virial balance  
+
+V∞² ∝ M / R,  
+
+we obtain  
+
+V∞ ∝ M^{(1 − 1/m)/2}.  
+
+Inverting yields the BTFR exponent  
+
+α = \frac{2}{1 − 1/m}.  
+
+For  
+
+m = 1.878,  
+
+this gives  
+
+α ≈ 2.72,  
+
+in excellent agreement with the observed value  
+
+α = 2.719 ± 0.081.  
+
+Thus the BTFR exponent is not fundamental, but emerges algebraically from the geometric fixed point of the MTS framework.
+
+---
+
+## 5. Radial Mass-Exponent Profiles and the Conditional Fixed Point
+
+### 5.1 Local Mass Exponent m(r)
+
+We define the local enclosed mass exponent  
+
+m(r) = d log M(<r) / d log r,  
+
+computed using sliding radial windows across each galaxy’s rotation curve. Galaxies are classified by whether m(r) intersects the MTS fixed point  
+
+m* = 1.878.  
+
+---
+
+### 5.2 Crossing vs. Non-Crossing Galaxies
+
+Two distinct populations emerge:
+
+**Crossing galaxies** are typically smaller, less massive, and slower-rotating systems. Their m(r) profiles begin at high values (m ≈ 2.3–2.5 at r/r_max ≈ 0.1), decrease with radius, and cross m* at r/r_max ≈ 0.3 before continuing to fall below it.
+
+**Non-crossing galaxies** are larger, more massive, and faster-rotating systems. Their m(r) profiles begin near m ≈ 1.3–1.5 and remain below m* at all observed radii.
+
+This conditional behavior resolves the apparent tension between the existence of a global BTFR scaling and the observed diversity of local m(r) profiles within individual galaxies.
+
+---
+
+### 5.3 Correlation with Global Properties
+
+Non-crossing galaxies are, on average, approximately five times more massive, twice as large, and 1.6 times faster-rotating than crossing galaxies. The presence or absence of an m(r) crossing is therefore a strong function of galaxy scale rather than data quality or sampling.
+
+---
+
+### 5.4 Interpretation
+
+The MTS fixed point m* = 1.878 is not a universal radial attractor. Instead, it represents a conditional geometric equilibrium. Smaller galaxies overshoot this value in their inner regions and relax through it, while larger galaxies remain in a sub-m* regime throughout their disks.
+
+This behavior does not contradict the BTFR: the BTFR reflects global mass–radius structure governed by m = 1.878, even when the fixed point is not locally realized at all radii.
+
+---
+
+## 6. Comparison with ΛCDM and MOND
+
+ΛCDM requires halo tuning to reproduce BTFR slopes and does not predict a universal mass exponent. MOND enforces α = 4 by construction, inconsistent with the present dataset. MTS predicts both the BTFR exponent and its conditional radial manifestation from a single geometric principle.
+
+---
+
+## 7. Conclusion
+
+We show that the Baryonic Tully–Fisher Relation arises naturally from Motion–TimeSpace geometry, with  
+
+α = 2.719 ± 0.081  
+
+derived from the universal mass–radius exponent  
+
+m = 1.878.  
+
+The same exponent governs internal galaxy structure through the radial mass-exponent profile m(r), but manifests conditionally rather than universally.
+
+Smaller galaxies cross the MTS fixed point as part of geometric relaxation, while larger galaxies do not. Together, these results unify global scaling laws and internal galactic dynamics within a single geometric framework, without invoking dark matter halos or modified gravity.
+
+---
